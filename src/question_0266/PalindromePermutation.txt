@@ -1,0 +1,19 @@
+226. PalindromePermutation
+Given a string, determine if a permutation of the string could form a palindrome.
+
+Example 1:
+
+Input: "code"
+Output: false
+Example 2:
+
+Input: "aab"
+Output: true
+Example 3:
+
+Input: "carerac"
+Output: true
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/palindrome-permutation
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
