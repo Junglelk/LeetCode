@@ -9,20 +9,20 @@ import org.junit.Test;
 public class Solution {
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(mySqrt(21.0));
     }
 
     public double mySqrt(double x) {
         double ans = 0.0;
-        double right =(double) x,left=0.0;
-        while(left<=right){
-            double middle = (right+left)/2;
-            if((double)middle * middle <= x){
+        double right = x, left = 0.0;
+        while (left <= right) {
+            double middle = (right + left) / 2;
+            if (middle * middle <= x) {
                 ans = middle;
-                left = middle+0.000000001;
-            }else{
-                right = middle-0.000000001;
+                left = middle + 0.000000001;
+            } else {
+                right = middle - 0.000000001;
             }
         }
         return ans;
