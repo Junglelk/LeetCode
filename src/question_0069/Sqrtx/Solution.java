@@ -1,0 +1,30 @@
+package question_0069.Sqrtx;
+
+import org.junit.Test;
+
+/**
+ * @author Jungle
+ * @since 2021/7/9 23:56
+ */
+public class Solution {
+
+    @Test
+    public void test(){
+        System.out.println(mySqrt(21.0));
+    }
+
+    public double mySqrt(double x) {
+        double ans = 0.0;
+        double right =(double) x,left=0.0;
+        while(left<=right){
+            double middle = (right+left)/2;
+            if((double)middle * middle <= x){
+                ans = middle;
+                left = middle+0.000000001;
+            }else{
+                right = middle-0.000000001;
+            }
+        }
+        return ans;
+    }
+}
