@@ -1,2 +1,5 @@
 /out
 .class
+/lib
+*.iml
+.idea
