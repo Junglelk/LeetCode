@@ -2,9 +2,7 @@ package question_0259.ThreeSumSmaller;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Description:
@@ -33,27 +31,31 @@ import java.util.List;
 public class Solution {
     @Test
     public void test() {
-
+        System.out.println(threeSumSmaller(new int[]{-2, 0, 1, 3}, 2));
     }
 
     public int threeSumSmaller(int[] nums, int target) {
         Arrays.sort(nums);
-        List<Integer> list = new ArrayList<>();
+        int sum = 0;
         for (int i = 0; i < nums.length - 2; i++) {
-            list.add(nums[i] + nums[i + 1] + nums[i + 2]);
+            sum += binarySearch(nums, i + 1, target - nums[i]);
         }
-        int low = 0, high = list.size() - 1;
-        while (low < high) {
-            int middle = (low + high) >> 1;
-            if (list.get(middle) == target || list.get(middle + 1)> target) {
-                return middle;
-            }else if (list.get(middle) > target){
-                high = middle - 1;
-            }
-            else {
-                low = middle + 1;
+
+        return sum;
+    }
+
+    public int binarySearch(int[] nums, int start, int target) {
+        int count = 0;
+        int high = nums.length - 1;
+        while (start < high) {
+            if (nums[start] + nums[high] < target) {
+                count += high - start;
+                start++;
+            } else {
+                high--;
             }
         }
-        return 0;
+
+        return count;
     }
 }
