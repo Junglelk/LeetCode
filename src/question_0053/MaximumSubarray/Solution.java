@@ -23,7 +23,7 @@ public class Solution {
             }
             ans = Math.max(ans, sum);
         }
-        //只加并存储连续的正数，因为但凡出现负数就说明原子序列已不是最大 interactively
+        //只加并存储连续的正数，因为但凡出现负数就说明原子序列已不是最大
         return ans;
     }
 }
