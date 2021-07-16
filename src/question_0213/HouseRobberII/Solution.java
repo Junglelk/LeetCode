@@ -21,8 +21,8 @@ import org.junit.Test;
  */
 public class Solution {
     @Test
-    public void test(){
-
+    public void test() {
+        System.out.println(rob(new int[]{1, 5, 3, 9, 5, 2, 5, 7, 12}));
     }
 
     public int rob(int[] nums) {
@@ -32,10 +32,16 @@ public class Solution {
         if (nums.length == 1) {
             return nums[0];
         }
-        boolean flag = false;
-        int pre = nums[0];
-        int result = Math.max(nums[0], nums[1]);
-        for (int i = 2; i < nums.length; i++) {
+        if (nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
+        }
+        return Math.max(robHandler(nums, 0, nums.length - 1), robHandler(nums, 1, nums.length));
+    }
+
+    public int robHandler(int[] nums, int start, int end) {
+        int pre = nums[start];
+        int result = Math.max(nums[start], nums[start + 1]);
+        for (int i = start + 2; i < end; i++) {
             int temp = result;
             result = Math.max(pre + nums[i], result);
             pre = temp;
