@@ -29,8 +29,8 @@ public class Solution {
      * 用 dp[i] 表示前 i 间房屋能偷窃到的最高总金额，那么就有如下的状态转移方程：
      * dp[i] = max{dp[i-2]+nums[i],dp[i-1]}
      *
-     * @param nums
-     * @return
+     * @param nums 状态数组
+     * @return 最大的总额度
      */
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) {
