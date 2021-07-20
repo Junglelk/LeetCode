@@ -52,7 +52,7 @@ public class Solution {
         for (int price : prices) {
             if (price < min) {
                 min = price;
-            } else if (max < price - min-fee) {
+            } else if (max < price - min - fee) {
                 max = price - min - fee;
                 total += max;
                 min = Integer.MAX_VALUE;
