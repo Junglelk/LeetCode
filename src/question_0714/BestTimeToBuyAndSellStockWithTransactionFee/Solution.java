@@ -41,24 +41,20 @@ import org.junit.Test;
 public class Solution {
     @Test
     public void test() {
-
+        // 这个数组下，答案是 8
+        System.out.println(maxProfit(new int[]{1, 3, 2, 8, 4, 9},2));
     }
 
     public int maxProfit(int[] prices, int fee) {
-        // 假设我们当前的为最小值，寻找当前之后的所有值中的最大值
-        int min = Integer.MAX_VALUE;
-        int max = 0;
-        int total = max;
-        for (int price : prices) {
-            if (price < min) {
-                min = price;
-            } else if (max < price - min - fee) {
-                max = price - min - fee;
-                total += max;
-                min = Integer.MAX_VALUE;
-                max = 0;
-            }
+        // 状态和状态转移方程。熟悉而头大的概念
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < n; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee);
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
         }
-        return total;
+        return dp[n-1][0];
     }
 }
