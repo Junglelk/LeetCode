@@ -43,6 +43,7 @@ public class Solution {
     public void test() {
         // 这个数组下，答案是 8
         System.out.println(maxProfit(new int[]{1, 3, 2, 8, 4, 9},2));
+        System.out.println(maxProfitG(new int[]{1, 3, 2, 8, 4, 9},2));
     }
 
     public int maxProfit(int[] prices, int fee) {
@@ -56,5 +57,21 @@ public class Solution {
             dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
         }
         return dp[n-1][0];
+    }
+
+    /**
+     * 优化空间复杂度
+     * @param prices 价格数组
+     * @param fee 交易费
+     * @return Integer
+     */
+    public int maxProfitG(int[] prices, int fee) {
+        int n = prices.length;
+        int sell = 0, buy = -prices[0];
+        for (int i = 1; i < n; ++i) {
+            sell = Math.max(sell, buy + prices[i] - fee);
+            buy = Math.max(buy, sell - prices[i]);
+        }
+        return sell;
     }
 }
