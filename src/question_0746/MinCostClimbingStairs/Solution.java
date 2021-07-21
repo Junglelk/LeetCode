@@ -20,7 +20,7 @@ package question_0746.MinCostClimbingStairs;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * </p>
  *
- * @author mk
+ * @author Jungle
  * @since 2021/7/15 17:36
  */
 public class Solution {

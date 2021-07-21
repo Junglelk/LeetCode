@@ -16,7 +16,7 @@ import org.junit.Test;
  * return the maximum amount of money you can rob tonight without alerting the police.
  * <p>
  *
- * @author mk
+ * @author Jungle
  * @since 2021/7/16 17:31
  */
 public class Solution {
