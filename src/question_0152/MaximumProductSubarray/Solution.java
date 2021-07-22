@@ -35,11 +35,38 @@ public class Solution {
     @Test
     public void test() {
         System.out.println(maxProduct(new int[]{-1, -2, -6}));
+        System.out.println(maxProduct(new int[]{2, 3, -2, 4}));
+        System.out.println(maxProduct(new int[]{2,-6,7,8,9,1,3,-2,4}));
+        System.out.println(maxProduct(new int[]{2,-1}));
+        System.out.println(maxProduct(new int[]{-2,-2}));
     }
 
     public int maxProduct(int[] nums) {
+        // 由于存在最小负数乘以一个负数直接会变成正数的操作，
+        // 所以需要同时维护最小负数与最大正数
+        int maxP = nums[0];
+        int minP = nums[0];
+        int result = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int max = maxP, min = minP;
+            maxP = Math.max(nums[i], Math.max(nums[i] * max, min * nums[i]));
+            minP = Math.min(nums[i], Math.min(nums[i] * max, min * nums[i]));
+            result = Math.max(maxP, result);
+        }
+        return result;
+    }
 
-
-        return 0;
+    public int maxProductS(int[] nums) {
+        // 由于存在最小负数乘以一个负数直接会变成正数的操作，
+        // 所以需要同时维护最小负数与最大正数
+        int maxF = nums[0], minF = nums[0], ans = nums[0];
+        int length = nums.length;
+        for (int i = 1; i < length; ++i) {
+            int mx = maxF, mn = minF;
+            maxF = Math.max(mx * nums[i], Math.max(nums[i], mn * nums[i]));
+            minF = Math.min(mn * nums[i], Math.min(nums[i], mx * nums[i]));
+            ans = Math.max(maxF, ans);
+        }
+        return ans;
     }
 }
