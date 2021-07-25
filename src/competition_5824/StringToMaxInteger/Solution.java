@@ -40,12 +40,12 @@ public class Solution {
     @Test
     public void test() {
         // 832
-//        System.out.println(maximumNumber("132",new int[]{9,8,5,0,3,6,4,2,6,8}));
-////        // 934
-//        System.out.println(maximumNumber("021",new int[]{9,4,3,5,7,2,1,9,0,6}));
-//        // 339
-//        System.out.println(maximumNumber("330",new int[]{9,3,6,3,7,3,1,4,5,8}));
-//        System.out.println(maximumNumber("3341111",new int[]{0,9,2,3,3,2,5,5,5,5}));
+        System.out.println(maximumNumber("132",new int[]{9,8,5,0,3,6,4,2,6,8}));
+        // 934
+        System.out.println(maximumNumber("021",new int[]{9,4,3,5,7,2,1,9,0,6}));
+        // 339
+        System.out.println(maximumNumber("330",new int[]{9,3,6,3,7,3,1,4,5,8}));
+        System.out.println(maximumNumber("3341111",new int[]{0,9,2,3,3,2,5,5,5,5}));
         System.out.println(maximumNumber("33411113",new int[]{0,9,2,3,3,2,5,5,5,5}));
     }
 
