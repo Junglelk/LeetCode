@@ -39,14 +39,31 @@ public class Solution {
         System.out.println(maxSumAfterOperationS(new int[]{2, -1, -4, -3}));
         // 4
         System.out.println(maxSumAfterOperationS(new int[]{1, -1, 1, 1, -1, -1, 1}));
+        // 4
+        System.out.println(maxSumAfterOperation(new int[]{1, -1, 1, 1, -1, -1, 1}));
     }
 
+    /**
+     * dp[i] 为到第 i 个数时的最大子序列和<br>
+     * dp[i][0] 表示到第 i 位时，未做过替换的最大子序列和<br>
+     * dp[i][1] 表示到第 i 位时，已做过替换的最大子序列和<br>
+     * <p>
+     * 初始状态：<br>
+     * <pre>
+     * dp[0][0] = nums[0];
+     * dp[0][1] = nums[0] * nums[0];
+     * </pre>
+     * 状态转移方程：
+     * <pre>
+     * dp[i][0] = max(dp[i-1][0]+nums[i],nums[i]);
+     * dp[i][1] = max(max(dp[i - 1][1] + nums[i], nums[i] * nums[i]), dp[i - 1][0] + nums[i] * nums[i]);
+     * </pre>
+     *
+     * @param nums 待求解数组
+     * @return 最大子序列和
+     */
     public int maxSumAfterOperation(int[] nums) {
-        // dp[i] 为到第 i 个数时的最大子序列和
-        // dp[i][0] 表示到第 i 位时，未做过替换的最大子序列和
-        // dp[i][1] 表示到第 i 位时，已做过替换的最大子序列和
-        // dp[i][0] = max(dp[i-1][0]+nums[i],nums[i]);
-        // dp[i][1] = max(max(dp[i - 1][1] + nums[i], nums[i] * nums[i]), dp[i - 1][0] + nums[i] * nums[i]);
+
         int n = nums.length;
         int[][] dp = new int[n][2];
         dp[0][0] = nums[0];
@@ -60,6 +77,12 @@ public class Solution {
         return max;
     }
 
+    /**
+     * 优化空间复杂度版本
+     *
+     * @param nums 待求解数组
+     * @return 最大子序列和
+     */
     public int maxSumAfterOperationS(int[] nums) {
         int n = nums.length;
         int first = nums[0];
