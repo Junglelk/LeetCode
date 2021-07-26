@@ -1,5 +1,7 @@
 package question_1746.MaximumSubarraySumAfterOneOperation;
 
+import org.junit.Test;
+
 /**
  * Description:
  * <p>
@@ -28,7 +30,14 @@ package question_1746.MaximumSubarraySumAfterOneOperation;
  * @author mk
  * @since 2021/7/26 17:51
  */
+
 public class Solution {
+
+    @Test
+    public void test() {
+
+    }
+
     public int maxSumAfterOperation(int[] nums) {
         return 0;
     }
