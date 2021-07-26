@@ -35,10 +35,18 @@ public class Solution {
 
     @Test
     public void test() {
-
+        // 17
+        System.out.println(maxSumAfterOperation(new int[]{2, -1, -4, -3}));
     }
 
     public int maxSumAfterOperation(int[] nums) {
-        return 0;
+        int n = nums.length;
+        int cur = Math.max(nums[0], nums[0] * nums[0]);
+        int max = 0;
+        for (int i = 1; i < n; i++) {
+            max = Math.max(cur + nums[i] * nums[i], max);
+            cur = max;
+        }
+        return cur;
     }
 }
