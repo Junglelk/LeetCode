@@ -36,24 +36,41 @@ public class Solution {
     @Test
     public void test() {
         // 17
-        System.out.println(maxSumAfterOperation(new int[]{2, -1, -4, -3}));
+        System.out.println(maxSumAfterOperationS(new int[]{2, -1, -4, -3}));
+        // 4
+        System.out.println(maxSumAfterOperationS(new int[]{1, -1, 1, 1, -1, -1, 1}));
     }
 
     public int maxSumAfterOperation(int[] nums) {
         // dp[i] 为到第 i 个数时的最大子序列和
-        // dp[i][0] 表示已做过乘法的最大子序列和
-        // dp[i][1] 表示未做过乘法的最大子序列和
-        // dp[i+1][0] = max(dp[i][0]+nums[i+1],dp[i][0]);
-        // dp[i+1][1] = max(dp[i][1]+nums[i+1],dp[i][0]+nums[i+1]*nums[i+1]);
+        // dp[i][0] 表示到第 i 位时，未做过替换的最大子序列和
+        // dp[i][1] 表示到第 i 位时，已做过替换的最大子序列和
+        // dp[i][0] = max(dp[i-1][0]+nums[i],nums[i]);
+        // dp[i][1] = max(max(dp[i - 1][1] + nums[i], nums[i] * nums[i]), dp[i - 1][0] + nums[i] * nums[i]);
         int n = nums.length;
         int[][] dp = new int[n][2];
         dp[0][0] = nums[0];
         dp[0][1] = nums[0] * nums[0];
-        for (int i = 1; i < n - 1; i++) {
-            dp[i + 1][0] = Math.max(dp[i][0] + nums[i + 1], dp[i][0]);
-            dp[i + 1][1] = Math.max(dp[i][1] + nums[i + 1], dp[i][0] + nums[i + 1] * nums[i + 1]);
+        int max = 0;
+        for (int i = 1; i < n; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0] + nums[i], nums[i]);
+            dp[i][1] = Math.max(Math.max(dp[i - 1][1] + nums[i], nums[i] * nums[i]), dp[i - 1][0] + nums[i] * nums[i]);
+            max = Math.max(dp[i][1], max);
         }
+        return max;
+    }
 
-        return dp[n - 1][1];
+    public int maxSumAfterOperationS(int[] nums) {
+        int n = nums.length;
+        int first = nums[0];
+        int second = nums[0] * nums[0];
+        int max = 0;
+        for (int i = 1; i < n; i++) {
+            int temp = first;
+            first = Math.max(first + nums[i], nums[i]);
+            second = Math.max(Math.max(second + nums[i], nums[i] * nums[i]), temp + nums[i] * nums[i]);
+            max = Math.max(second, max);
+        }
+        return max;
     }
 }
