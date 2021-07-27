@@ -41,7 +41,7 @@ public class Solution {
         }
         // dp[i][j] 为抛到第 i 个硬币，有 j 个硬币朝上的概率 0<=j<=i
         // dp[i][j] = dp[i-1][j] * (1-pron[i]) + dp[i-1][j-1]*prob[i]
-        double[][] dp = new double[prob.length + 1][prob.length + 1];
+        double[][] dp = new double[prob.length][prob.length + 1];
         dp[0][1] = prob[0];
         dp[0][0] = 1 - prob[0];
         for (int i = 1; i < prob.length; i++) {
