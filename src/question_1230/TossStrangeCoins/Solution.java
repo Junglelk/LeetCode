@@ -39,6 +39,13 @@ public class Solution {
         if (prob.length == 1) {
             return prob[0];
         }
+        if (prob.length == target) {
+            double pr = 1.0;
+            for (double v : prob) {
+                pr *= v;
+            }
+            return pr;
+        }
         // dp[i][j] 为抛到第 i 个硬币，有 j 个硬币朝上的概率 0<=j<=i
         // dp[i][j] = dp[i-1][j] * (1-pron[i]) + dp[i-1][j-1]*prob[i]
         double[][] dp = new double[prob.length][prob.length + 1];
