@@ -1,5 +1,7 @@
 package question_1143.LongestCommonSubsequence;
 
+import org.junit.Test;
+
 /**
  * Description:
  * <p>
@@ -27,18 +29,26 @@ package question_1143.LongestCommonSubsequence;
  * @since 2021/7/27 17:21
  */
 public class Solution {
+
+    @Test
+    public void test() {
+        System.out.println(longestCommonSubsequence("abc", "abc"));
+    }
+
+
     public int longestCommonSubsequence(String text1, String text2) {
-        String small;
-        String big;
-        if (text1.length() > text2.length()) {
-            big = text1;
-            small = text2;
-        } else {
-            big = text2;
-            small = text1;
+        int[][] dp = new int[text1.length() + 1][text2.length() + 1];
+        for (int i = 1; i <= text1.length(); i++) {
+            char temp = text1.charAt(i - 1);
+            for (int j = 1; j <= text2.length(); j++) {
+                char temp1 = text2.charAt(j - 1);
+                if (temp == temp1) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
         }
-        int[][] dp = new int[small.length()][1];
-        // dp[i][1] 表示 到第 i 个元素时，最长子序列的长度。
-        return 0;
+        return dp[text1.length()][text2.length()];
     }
 }
