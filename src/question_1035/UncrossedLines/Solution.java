@@ -45,9 +45,9 @@ public class Solution {
 //        2
         System.out.println(maxUncrossedLines(new int[]{1, 2, 4}, new int[]{1, 4, 2}));
 //        3
-        System.out.println(maxUncrossedLines(new int[]{2,5,1,2,5}, new int[]{10,5,2,1,5,2}));
+        System.out.println(maxUncrossedLines(new int[]{2, 5, 1, 2, 5}, new int[]{10, 5, 2, 1, 5, 2}));
 //        2
-        System.out.println(maxUncrossedLines(new int[]{1,3,7,1,7,5}, new int[]{1,9,2,5,1}));
+        System.out.println(maxUncrossedLines(new int[]{1, 3, 7, 1, 7, 5}, new int[]{1, 9, 2, 5, 1}));
 //        1
         System.out.println(maxUncrossedLines(new int[]{3, 2}, new int[]{2, 2, 2, 3}));
 
@@ -55,27 +55,17 @@ public class Solution {
 
 
     public int maxUncrossedLines(int[] nums1, int[] nums2) {
-        // 记dp[i][j] 为到nums1的第i个与nums2第j个时，不相交的连线数
-
-        int num = 0;
-        int p1 = 0;
-        int p2 = 0;
-        if (nums1[0] == nums2[0]) {
-            num = 1;
-        }
-        for (int i = 0, nums1Length = nums1.length; i < nums1Length; i++) {
-            int temp = nums1[i];
-            for (int j = 0; j < nums2.length; j++) {
-                int temp1 = nums2[j];
-                if (temp == temp1) {
-                    if (j > p1 && i > p2) {
-                        num = num + 1;
-                        p1 = j;
-                        p2 = i;
-                    }
+        int[][] dp = new int[nums1.length + 1][nums2.length + 1];
+        for (int i = 1; i <= nums1.length; i++) {
+            int temp = nums1[i - 1];
+            for (int j = 1; j <= nums2.length; j++) {
+                if (temp == nums2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
                 }
             }
         }
-        return num;
+        return dp[nums1.length][nums2.length];
     }
 }
