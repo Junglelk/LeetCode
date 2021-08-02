@@ -44,6 +44,7 @@ public class Solution {
 
     @Test
     public void test() {
+        // 未解决
         System.out.println(Arrays.toString(kWeakestRows(new int[][]{
                 {1, 1, 0, 0, 0},
                 {1, 1, 1, 1, 0},
