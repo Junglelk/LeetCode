@@ -33,7 +33,13 @@ public class Solution {
         System.out.println(lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
     }
 
-    public int lengthOfLIS(int[] nums) {
+    /**
+     * 我的错误版本
+     *
+     * @param nums 数组
+     * @return 最大子序列的长度
+     */
+    public int lengthOfLISError(int[] nums) {
         if (nums.length == 1) {
             return 1;
         }
@@ -50,6 +56,33 @@ public class Solution {
                     dp[i] = dp[i - 1];
                 }
             }
+        }
+        return max;
+    }
+
+    /**
+     * 实际的正确版本
+     *
+     * @param nums 数组
+     * @return 最大子序列的长度
+     */
+    public int lengthOfLIS(int[] nums) {
+        if (nums.length == 1) {
+            return 1;
+        }
+        // 由于子序列可以有任意的组合，所以在每一步都需要返回最初始处重新计算到当前位置处的最优解
+        int[] dp = new int[nums.length];
+        int max = 1;
+        dp[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            // 需要对新到达的位置赋值，赋值为 1 为到当前位置处连续增长最大子序列为 1 即为nums[i] 本身，这样才有比较的基础
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            max = Math.max(dp[i], max);
         }
         return max;
     }
