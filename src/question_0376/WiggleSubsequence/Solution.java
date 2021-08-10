@@ -2,8 +2,6 @@ package question_0376.WiggleSubsequence;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * Description:
  * <p>
@@ -66,17 +64,23 @@ public class Solution {
         }
         return Math.max(up[n - 1], down[n - 1]);
     }
+
     public int wiggleMaxLengthS(int[] nums) {
         int n = nums.length;
         if (n < 2) {
             return n;
         }
-        int up = 1 ;
-        int down  = 1;
+        // up 为上升序列的最后一个值
+        int up = 1;
+        // down 为下降序列的最后一个值
+        int down = 1;
+        // 实际上这两个序列可以在一次比较后更换
         for (int i = 1; i < n; i++) {
             if (nums[i] > nums[i - 1]) {
+                // 新的数字比前一个大，只有原为down的才符合摆动序列
                 up = Math.max(up, down + 1);
             } else if (nums[i] < nums[i - 1]) {
+                // 新的数字比前一个小，只有原为up的才符合摆动序列
                 down = Math.max(up + 1, down);
             }
         }
