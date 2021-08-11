@@ -32,7 +32,7 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(longestCommonSubsequence("abc", "abc"));
+        System.out.println(longestCommonSubsequenceReview("abc", "abc"));
     }
 
 
@@ -51,4 +51,23 @@ public class Solution {
         }
         return dp[text1.length()][text2.length()];
     }
+
+    public int longestCommonSubsequenceReview(String text1, String text2) {
+        int m = text1.length();
+        int n = text2.length();
+        int[][] dp = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; i++) {
+            char temp = text1.charAt(i - 1);
+            for (int j = 1; j <= n; j++) {
+                char temp1 = text2.charAt(j - 1);
+                if (temp == temp1) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+
 }
