@@ -23,13 +23,19 @@ public class Solution {
 //    }
     @Test
     public void test() {
-//        System.out.println(minStoneSum(new int[]{10000}, 10000));
-//        System.out.println(minStoneSum(new int[]{4122, 9928, 3477, 9942}, 6));
+        System.out.println(minStoneSum(new int[]{10000}, 10000));
+        System.out.println(minStoneSum(new int[]{4122, 9928, 3477, 9942}, 6));
 
         System.out.println(minStoneSum(new int[]{2695, 9184, 2908, 3869, 3779, 391, 2896, 5328}, 10));
     }
 
-
+    /**
+     * 由于每次都需要选择最大值，所以这题实际上是在考大顶堆数据结构
+     *
+     * @param piles
+     * @param k
+     * @return
+     */
     public static int minStoneSum(int[] piles, int k) {
         if (piles.length == 1) {
             for (int i = 0; i < k; i++) {
@@ -39,10 +45,9 @@ public class Solution {
         }
         Arrays.sort(piles);
         int point = piles.length - 1;
-        int j = 0;
         for (int i = 1; i <= k; i++) {
             piles[point] = piles[point] % 2 == 0 ? piles[point] / 2 : piles[point] / 2 + 1;
-            Arrays.sort(piles);
+            Arrays.sort(piles, point / 2, point + 1);
             point = piles.length - 1;
         }
         int ans = 0;
