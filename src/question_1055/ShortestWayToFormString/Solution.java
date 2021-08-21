@@ -2,6 +2,9 @@ package question_1055.ShortestWayToFormString;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
  * <p>
@@ -38,9 +41,9 @@ public class Solution {
     /**
      * 每次都将源字符串延长，知道两者相同子串与target一致，记录延长次数。但会超时...
      *
-     * @param source
-     * @param target
-     * @return
+     * @param source 源字符串
+     * @param target 目标字符串
+     * @return 次数
      */
     public int shortestWay(String source, String target) {
         for (int i = 0; i < target.length(); i++) {
@@ -49,39 +52,7 @@ public class Solution {
             }
         }
         int times = 0;
-        int length = 0;
-        StringBuilder temp = new StringBuilder();
-        while (length != target.length()) {
-            times++;
-            temp.append(source);
-            length = longestCommonSubsequence(temp.toString(), target);
-        }
 
         return times;
-    }
-
-    /**
-     * 最长公共子序列
-     *
-     * @param text1 源字符串
-     * @param text2 目标字符串
-     * @return 公共子序列长度
-     */
-    public int longestCommonSubsequence(String text1, String text2) {
-        int m = text1.length();
-        int n = text2.length();
-        int[][] dp = new int[m + 1][n + 1];
-        for (int i = 1; i <= m; i++) {
-            char temp = text1.charAt(i - 1);
-            for (int j = 1; j <= n; j++) {
-                char temp1 = text2.charAt(j - 1);
-                if (temp == temp1) {
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
-                } else {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-                }
-            }
-        }
-        return dp[m][n];
     }
 }
