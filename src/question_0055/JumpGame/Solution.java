@@ -33,16 +33,30 @@ public class Solution {
     @Test
     public void test() {
         System.out.println(canJump(new int[]{3, 2, 1, 0, 4}));
+        System.out.println(canJump(new int[]{2, 3, 1, 1, 4}));
     }
 
-
+    /**
+     * 求最长能到哪。记为N，只要 N > nums.length 即可。
+     *
+     * @param nums 步长数组
+     * @return 是否可行
+     */
     public boolean canJump(int[] nums) {
-        int[] dp = new int[nums.length];
-        dp[0] = nums[0];
+        // dp[i] 记录由 0 位置起，能否到达第 i 个位置的状态：是or否。
+        boolean[] dp = new boolean[nums.length];
+        // 边界条件为：是
+        dp[0] = true;
+        // dp[i] = true 的条件是：i之前的位置 j 可到达，且从 j 出发可到达 i。
         for (int i = 1; i < nums.length; i++) {
-            dp[i] = nums[dp[i - 1]] + nums[i];
+            for (int j = 0; j < i; j++) {
+                // 状态转移方程
+                if (dp[j] && j + nums[j] >= i) {
+                    dp[i] = true;
+                    break;
+                }
+            }
         }
-
-        return dp[nums.length - 1] > nums.length;
+        return dp[nums.length - 1];
     }
 }
