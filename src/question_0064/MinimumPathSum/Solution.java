@@ -48,23 +48,6 @@ public class Solution {
         int n = grid[0].length;
         int[][] dp = new int[m][n];
         dp[0][0] = grid[0][0];
-        if (m == 1 && n == 1) {
-            return grid[m - 1][n - 1];
-        }
-        if (m == 1) {
-            int sum = 0;
-            for (int i : grid[0]) {
-                sum += i;
-            }
-            return sum;
-        }
-        if (n == 1) {
-            int sum = 0;
-            for (int[] ints : grid) {
-                sum += ints[0];
-            }
-            return sum;
-        }
         for (int i = 1; i < n; i++) {
             dp[0][i] += dp[0][i - 1] + grid[0][i];
         }
