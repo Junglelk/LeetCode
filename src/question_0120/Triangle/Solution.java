@@ -62,16 +62,9 @@ public class Solution {
         for (int i = 1; i < triangle.size(); i++) {
             dp[i][0] = dp[i - 1][0] + triangle.get(i).get(0);
         }
-        for (int i = 1; i < triangle.size(); i++) {
-            List<Integer> temp = triangle.get(i);
-            int pre = triangle.get(i - 1).size();
-            int size = temp.size();
-            dp[i][size - 1] = dp[i - 1][pre - 1] + temp.get(size - 1);
-        }
+
         for (int i = 1; i < triangle.size(); i++) {
             List<Integer> integers = triangle.get(i);
-            // 一开始这里我写的是j<integers.size()，这会导致比较到最后一个的时候，总会与 0 比较大小。
-            // 这样一来，结果就错了。正因为我考虑了三角形的腰，导致写了上面那些无用的代码，，太不好看了
             for (int j = 1; j < i; j++) {
                 dp[i][j] = Math.min(dp[i - 1][j] + integers.get(j), dp[i - 1][j - 1] + integers.get(j));
             }
