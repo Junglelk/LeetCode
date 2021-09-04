@@ -42,21 +42,43 @@ public class Solution {
 
     }
 
+    @Test
+    public void test01() {
+        List<List<Integer>> list = new ArrayList<>();
+        // [[2],[3,4],[6,5,7],[4,1,8,3]]
+        list.add(List.of(2));
+        list.add(List.of(3, 4));
+        list.add(List.of(6, 5, 7));
+        list.add(List.of(4, 1, 8, 3));
+        System.out.println(minimumTotal(list));
+
+    }
+
 
     public int minimumTotal(List<List<Integer>> triangle) {
-        int sum = triangle.get(0).get(0);
-        int j = 1;
+        // dp[i][j] 到第i行第j个位置时的最小路径和
+        int[][] dp = new int[triangle.size()][triangle.size()];
+        dp[0][0] = triangle.get(0).get(0);
+        for (int i = 1; i < triangle.size(); i++) {
+            dp[i][0] = dp[i - 1][0] + triangle.get(i).get(0);
+        }
         for (int i = 1; i < triangle.size(); i++) {
             List<Integer> temp = triangle.get(i);
-            if (j >= triangle.size()) {
-                sum += temp.get(temp.size() - 1);
-            } else {
-                Integer a = temp.get(j - 1);
-                Integer b = temp.get(j);
-                j = a > b ? j + 1 : j;
-                sum += Math.min(a, b);
-            }
+            int pre = triangle.get(i - 1).size();
+            int size = temp.size();
+            dp[i][size - 1] = dp[i - 1][pre - 1] + temp.get(size - 1);
         }
-        return sum;
+        for (int i = 1; i < triangle.size(); i++) {
+            List<Integer> integers = triangle.get(i);
+            for (int j = 1; j < i; j++) {
+                dp[i][j] = Math.min(dp[i - 1][j] + integers.get(j), dp[i - 1][j - 1] + integers.get(j));
+            }
+            dp[i][i] = dp[i - 1][i - 1] + integers.get(i);
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i : dp[dp.length - 1]) {
+            min = Math.min(i, min);
+        }
+        return min;
     }
 }
