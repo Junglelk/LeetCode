@@ -40,15 +40,50 @@ public class Solution {
         for (int i = 1; i < s.length(); i++) {
             dp[0][i] = dp[0][i - 1] + s.charAt(i);
         }
-        List<String> temp = new ArrayList<>();
-
         for (int i = 1; i < s.length(); i++) {
             for (int j = i; j < s.length(); j++) {
-
+                if (i == j) {
+                    dp[i][j] = s.charAt(i) + "";
+                } else {
+                    dp[i][j] = dp[i][j - 1] + s.charAt(j);
+                }
             }
         }
+        int times = 0;
+        while (times < s.length()) {
+            int k = times;
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < s.length(); i++) {
+                for (int j = k; j < s.length(); ) {
+                    if (isPalindrome(dp[i][j])) {
+                        list.add(dp[i][j]);
+                        i += dp[i][j].length();
+                        j = i;
+                    } else {
+                        j++;
+                    }
+                }
+            }
+            ret.add(list);
+            times++;
+        }
+        return ret;
+    }
 
-        ret.add(temp);
-        return new ArrayList<>();
+    public boolean isPalindrome(String str) {
+        if (str == null) {
+            return false;
+        }
+        int j = str.length() - 1;
+        int i = 0;
+        while (i < j) {
+            if (str.charAt(i) == str.charAt(j)) {
+                i++;
+                j--;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 }
