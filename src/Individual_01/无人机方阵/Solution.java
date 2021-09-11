@@ -46,33 +46,10 @@ public class Solution {
     }
 
     public int minimumSwitchingTimes(int[][] source, int[][] target) {
-        Map<Integer, Integer> map1 = new HashMap<>();
-        Map<Integer, Integer> map2 = new HashMap<>();
-        toMap(source, map1);
-        toMap(target, map2);
         int exchange = 0;
-        for (Entry<Integer, Integer> entry : map1.entrySet()) {
-            if (map2.containsKey(entry.getKey())) {
-                if (map2.get(entry.getKey()) != entry.getValue())
-                    exchange += Math.abs(entry.getKey() - map2.get(entry.getKey()));
-            } else {
-                exchange += entry.getValue();
-            }
-        }
+
         return exchange;
     }
 
-    private void toMap(int[][] source, Map<Integer, Integer> map1) {
-        for (int[] ints : source) {
-            for (int anInt : ints) {
-                if (map1.get(anInt) == null) {
-                    map1.put(anInt, 1);
-                } else {
-                    int temp = map1.get(anInt);
-                    temp++;
-                    map1.put(anInt, temp);
-                }
-            }
-        }
-    }
+
 }
