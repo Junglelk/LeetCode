@@ -20,6 +20,15 @@ import java.util.List;
  * <p>
  * 如果存在多个有效解子集，返回其中任何一个均可。
  * <p>
+ * <pre>
+ * 输入：nums = [1,2,3]
+ * 输出：[1,2]
+ * 解释：[1,3] 也会被视为正确答案。
+ * </pre>
+ * <pre>
+ * 输入：nums = [1,2,4,8]
+ * 输出：[1,2,4,8]
+ * </pre>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/largest-divisible-subset
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
