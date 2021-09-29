@@ -28,8 +28,17 @@ public class Solution {
     public void test() {
         System.out.println(findTheDifference("abcd", "abcde"));
     }
-
     public char findTheDifference(String s, String t) {
+        char[] chars = (s + t).toCharArray();
+        char ret = 0;
+        for (char aChar : chars) {
+            ret ^= aChar;
+        }
+        return ret;
+    }
+
+
+    public char findTheDifferenceOrigin(String s, String t) {
         char[] chars = s.toCharArray();
         char[] chart = t.toCharArray();
         Arrays.sort(chars);
