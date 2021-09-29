@@ -28,6 +28,16 @@ public class Solution {
     public void test() {
         System.out.println(findTheDifference("abcd", "abcde"));
     }
+    public char findTheDifferenceAgain(String s, String t) {
+        char ret = 0;
+        for (int i = 0; i < s.length(); i++) {
+            ret ^= s.charAt(i);
+        }
+        for (int i = 0; i < t.length(); i++) {
+            ret ^= t.charAt(i);
+        }
+        return ret;
+    }
     public char findTheDifference(String s, String t) {
         char[] chars = (s + t).toCharArray();
         char ret = 0;
