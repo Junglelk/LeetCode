@@ -21,6 +21,6 @@ public class Solution {
         for (int num : nums) {
             set.add(num);
         }
-        return set.size() == nums.length;
+        return set.size() != nums.length;
     }
 }
