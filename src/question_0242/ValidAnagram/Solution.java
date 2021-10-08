@@ -23,6 +23,11 @@ public class Solution {
         char[] chart = t.toCharArray();
         Arrays.sort(chars);
         Arrays.sort(chart);
-        return Arrays.equals(chars,chart);
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] != chart[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
