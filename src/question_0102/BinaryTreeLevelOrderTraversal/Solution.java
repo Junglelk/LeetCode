@@ -1,5 +1,6 @@
-package question_0102;
-import question_0102.TreeNode;
+package question_0102.BinaryTreeLevelOrderTraversal;
+import other.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
