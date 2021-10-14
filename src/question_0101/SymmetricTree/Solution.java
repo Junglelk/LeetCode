@@ -1,10 +1,6 @@
 package question_0101.SymmetricTree;
 
-import lombok.val;
 import other.TreeNode;
-
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
@@ -18,30 +14,16 @@ import java.util.Queue;
  */
 public class Solution {
     public boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return false;
-        } else if (root.right == null && root.left == null) {
-            return false;
-        }
-        Queue<TreeNode> list = new LinkedList<>();
-        list.add(root);
-        while (!list.isEmpty()) {
-            TreeNode head = list.poll();
-            val size = list.size();
-            for (int i = 0; i < size; i++) {
-                if (head.left != null && head.right != null) {
-                    if (head.left.val == head.right.val) {
-                        list.add(head.left);
-                        list.add(head.right);
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            }
-        }
+        return check(root, root);
+    }
 
-        return true;
+    boolean check(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
+        return left.val == right.val && check(left.left, right.right) && check(left.right, right.left);
     }
 }
