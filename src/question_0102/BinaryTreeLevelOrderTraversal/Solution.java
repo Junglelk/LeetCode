@@ -24,7 +24,8 @@ public class Solution {
         while (!queue.isEmpty()){
             List<Integer> temp = new ArrayList<>();
             // 这里不能使用queue.size() 因为下面这个的长度会变化
-            for (int i = 0; i < queue.size(); i++) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 temp.add(node.val);
                 if (node.left != null) {
