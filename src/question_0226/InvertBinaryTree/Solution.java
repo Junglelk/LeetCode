@@ -32,17 +32,17 @@ import other.TreeNode;
  */
 public class Solution {
     public TreeNode invertTree(TreeNode root) {
-        if (root != null) {
-            TreeNode left;
-            TreeNode right;
-            left = root.right;
-            right = root.left;
-
-            root.left = left;
-            root.right = right;
-            invertTree(root.left);
-            invertTree(root.right);
+        if (root == null) {
+            return null;
         }
-        return null;
+        // 左边 = 翻转后的左边
+        TreeNode left = invertTree(root.left);
+        // 右边 = 反转后的右边
+        TreeNode right = invertTree(root.right);
+        // 翻转
+        root.left = right;
+        root.right = left;
+        // 返回根节点
+        return root;
     }
 }
