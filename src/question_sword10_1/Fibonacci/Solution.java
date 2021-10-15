@@ -1,4 +1,4 @@
-package question_Sword10_1.Fibonacci;
+package question_sword10_1.Fibonacci;
 
 /**
  * 传统的斐波那契数列题
