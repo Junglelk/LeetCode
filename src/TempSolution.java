@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,6 +32,28 @@ public class TempSolution {
         }
 
         return true;
+    }
+
+    public int countMaxOrSubsets(int[] nums) {
+
+        int maxNum = 0;
+        for (int num : nums) {
+            maxNum |= num;
+        }
+        Arrays.sort(nums);
+        int result = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int temp = 0;
+            for (int j = i + 1; j < nums.length - 1; j++) {
+                temp = nums[i] | nums[j];
+                if (temp == maxNum) {
+                    break;
+                }
+            }
+            result += (int) Math.pow(2, nums.length - i) - 1;
+        }
+
+        return result;
     }
 }
 
@@ -96,8 +119,8 @@ class Bank {
         if (balance[account1 - 1] < money) {
             return false;
         }
-        balance[account1-1] -= money;
-        balance[account2-1] += money;
+        balance[account1 - 1] -= money;
+        balance[account2 - 1] += money;
         return true;
     }
 
@@ -112,7 +135,7 @@ class Bank {
         if (account > accountNum) {
             return false;
         }
-        balance[account-1] += money;
+        balance[account - 1] += money;
         return true;
     }
 
@@ -127,10 +150,10 @@ class Bank {
         if (account > accountNum) {
             return false;
         }
-        if (balance[account-1] < money) {
+        if (balance[account - 1] < money) {
             return false;
         }
-        balance[account-1] -= money;
+        balance[account - 1] -= money;
         return true;
     }
 }
