@@ -32,6 +32,27 @@ package question_0036.ValidSudoku;
  */
 public class Solution {
     public boolean isValidSudoku(char[][] board) {
-        return false;
+        int[][] col = new int[9][9];
+        int[][] row = new int[9][9];
+        int[][][] sub = new int[3][3][9];
+        // 哈希表的思想，以数独内的值为散列值，每次遍历到对应的数字就计数
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                char c = board[i][j];
+                if (c != '.') {
+                    int index = c - '0' - 1;
+                    col[i][index]++;
+                    row[j][index]++;
+                    sub[i / 3][j / 3][index]++;
+                    // 对应坐标大于1时，说明重复，结束运算
+                    if (col[i][index] > 1 || row[j][index] > 1 || sub[i / 3][j / 3][index] > 1) {
+                        return false;
+                    }
+                }
+
+            }
+        }
+        // 能到达此位置说明遍历无违反规则点
+        return true;
     }
 }
