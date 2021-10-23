@@ -1,8 +1,11 @@
 package question_0020.ValidParentheses;
 
+import org.junit.Test;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
 /**
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -27,26 +30,32 @@ import java.util.Stack;
  */
 public class Solution {
 
-    public boolean isValid(String s) {
-        Map<Character, Character> map = new HashMap<>();
-        map.put(')', '(');
-        map.put('}', '{');
-        map.put(']', '[');
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            //若字符串中的第i个元素是映射表的Key，即右括号
-            if (map.containsKey(c)) {
-                //则判断栈是否为空，若空则返回'#'占位符，否则栈顶元素出栈
-                char a = stack.isEmpty() ? '#' : stack.pop();
-                //若栈顶元素(括号)不匹配
-                if (map.get(c) != a) {
-                    return false;
-                }
-            } else {
-                stack.push(c);
-            }
+    @Test
+    public void test() {
+        System.out.println(isValid("()"));
+    }
 
+
+    public boolean isValid(String s) {
+        if (s.length() % 2 != 0) {
+            return false;
+        }
+        Map<Character, Character> map = new HashMap<>();
+        map.put('}', '{');
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('&', '$');
+        Deque<Character> stack = new ArrayDeque<>();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char temp = s.charAt(i);
+            if (map.containsKey(temp)) {
+                stack.push(temp);
+                continue;
+            }
+            char c = stack.isEmpty() ? '&' : stack.pop();
+            if (map.get(c) != temp) {
+                return false;
+            }
         }
         return stack.isEmpty();
     }
