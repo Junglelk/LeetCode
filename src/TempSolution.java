@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * @author Jungle
  * @since 2021/10/17 10:29
@@ -10,29 +8,34 @@ public class TempSolution {
 
     @Test
     public void test() {
-        System.out.println();
+        System.out.println(countValidWords("he bought 2 pencils, 3 erasers, and 1  pencil-sharpener."));
+        System.out.println(countValidWords("fzdej0s mss!v  u.0!  3c,i!,h3p63 nk   ipyz-9 - vn1 vk50u"));
+        System.out.println(countValidWords("vn1"));
+        System.out.println(countValidWords(". ! 7hk  al6 l! aon49esj35la k3 7u2tkh  7i9y5  !jyylhppd et v- h!ogsouv 5"));
+//        System.out.println(nextBeautifulNumber(748601));
     }
 
-
-    public int countMaxOrSubsets(int[] nums) {
-
-        int maxNum = 0;
-        for (int num : nums) {
-            maxNum |= num;
-        }
-        Arrays.sort(nums);
-        int result = 0;
-        for (int i = 0; i < nums.length; i++) {
-            int temp = 0;
-            for (int j = i + 1; j < nums.length - 1; j++) {
-                temp = nums[i] | nums[j];
-                if (temp == maxNum) {
-                    break;
-                }
+    /**
+     * 仅由小写字母、连字符和/或标点（不含数字）。
+     * 至多一个 连字符 '-' 。如果存在，连字符两侧应当都存在小写字母（"a-b" 是一个有效单词，但 "-ab" 和 "ab-" 不是有效单词）。
+     * 至多一个 标点符号。如果存在，标点符号应当位于 token 的 末尾 。
+     *
+     * @param sentence
+     * @return
+     */
+    public int countValidWords(String sentence) {
+        String[] words = sentence.split(" ");
+        String rex = "^[a-z]+$|^[a-z]+-?[a-z]+$|[a-z]*[.,!]?$|^[a-z]+-?[a-z]+[,!.]?$";
+        int nums = 0;
+        for (String word : words) {
+            if ("".equals(word)) {
+                continue;
             }
-            result += (int) Math.pow(2, nums.length - i) - 1;
+            if (word.matches(rex)) {
+                nums++;
+            }
         }
-
-        return result;
+        return nums;
     }
+
 }
