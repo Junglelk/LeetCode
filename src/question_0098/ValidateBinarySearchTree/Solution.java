@@ -36,14 +36,17 @@ public class Solution {
 
     @Test
     public void test() {
-        TreeNode b = new TreeNode(2);
-        b.left = new TreeNode(1);
-        b.right = new TreeNode(3);
+        TreeNode b = new TreeNode(5);
+        b.left = new TreeNode(4);
+        b.right = new TreeNode(6);
+        b.right.left = new TreeNode(3);
+        b.right.right = new TreeNode(7);
         System.out.println(isValidBST(b));
     }
 
 
     public boolean isValidBST(TreeNode root) {
+        // 这个解法只考虑了局部解，未考虑完全解
         if (root == null) {
             return true;
         }
