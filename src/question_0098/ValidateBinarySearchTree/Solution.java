@@ -36,21 +36,24 @@ public class Solution {
 
     @Test
     public void test() {
-
+        TreeNode b = new TreeNode(2);
+        b.left = new TreeNode(1);
+        b.right = new TreeNode(3);
+        System.out.println(isValidBST(b));
     }
 
 
     public boolean isValidBST(TreeNode root) {
         if (root == null) {
+            return true;
+        }
+        if (root.left != null && root.right != null && (root.val >= root.right.val || root.val <= root.left.val)) {
+            return false;
+        } else if (root.left != null && root.val <= root.left.val) {
+            return false;
+        } else if (root.right != null && root.val >= root.right.val) {
             return false;
         }
-        if (root.left != null && root.right != null && root.val < root.right.val && root.val > root.left.val) {
-            return isValidBST(root.left) && isValidBST(root.right);
-        } else if (root.left != null && root.val > root.left.val) {
-            return isValidBST(root.left);
-        } else if (root.right != null && root.val < root.right.val) {
-            return isValidBST(root.right);
-        }
-        return false;
+        return isValidBST(root.left) && isValidBST(root.right);
     }
 }
