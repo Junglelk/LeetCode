@@ -41,7 +41,7 @@ public class Solution {
         b.right = new TreeNode(6);
         b.right.left = new TreeNode(3);
         b.right.right = new TreeNode(7);
-        System.out.println(isValidBST(b));
+        System.out.println(isValidBSTRe(b));
     }
 
 
@@ -58,5 +58,20 @@ public class Solution {
             return false;
         }
         return isValidBST(root.left) && isValidBST(root.right);
+    }
+
+    public boolean isValidBSTRe(TreeNode root) {
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean isValidBST(TreeNode node, long lower, long upper) {
+        if (node == null) {
+            return true;
+        }
+        if (node.val <= lower || node.val >= upper) {
+            return false;
+        }
+        // 每层保留此分支上一层的最小值，或最大值，保证本层不会越界
+        return isValidBST(node.left, lower, node.val) && isValidBST(node.right, node.val, upper);
     }
 }
