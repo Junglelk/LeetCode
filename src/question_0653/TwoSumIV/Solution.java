@@ -22,9 +22,6 @@ public class Solution {
         if (root == null) {
             return false;
         }
-        if (root.left == null && root.right == null) {
-            return false;
-        }
         Set<Integer> set = new HashSet<>();
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(root);
@@ -40,7 +37,11 @@ public class Solution {
         }
 
         for (Integer integer : set) {
-            if (set.contains(k - integer)) {
+            int key = k - integer;
+            if (key == integer) {
+                return false;
+            }
+            if (set.contains(key)) {
                 return true;
             }
         }
