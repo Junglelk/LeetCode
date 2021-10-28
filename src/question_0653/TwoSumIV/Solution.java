@@ -22,7 +22,9 @@ public class Solution {
         if (root == null) {
             return false;
         }
-
+        if (root.left == null && root.right == null) {
+            return false;
+        }
         Set<Integer> set = new HashSet<>();
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(root);
