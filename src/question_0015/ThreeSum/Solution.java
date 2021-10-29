@@ -2,7 +2,9 @@ package question_0015.ThreeSum;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
@@ -29,23 +31,36 @@ public class Solution {
 
     public List<List<Integer>> threeSum(int[] nums) {
         if (nums.length < 3) {
-            return null;
+            return new ArrayList<>();
         }
+        int n = nums.length;
         Arrays.sort(nums);
-        Set<List<Integer>> result = new HashSet<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            for (int j = i + 1; j < nums.length - 1; j++) {
-                for (int k = j + 1; k < nums.length; k++) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
-                        List<Integer> temp = new ArrayList<>();
-                        temp.add(nums[i]);
-                        temp.add(nums[j]);
-                        temp.add(nums[k]);
-                        result.add(temp);
-                    }
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int first = 0; first < n; ++first) {
+            if (first > 0 && nums[first] == nums[first - 1]) {
+                continue;
+            }
+            int third = n - 1;
+            int target = -nums[first];
+            for (int second = first + 1; second < n; ++second) {
+                if (second > first + 1 && nums[second] == nums[second - 1]) {
+                    continue;
+                }
+                while (second < third && nums[second] + nums[third] > target) {
+                    --third;
+                }
+                if (second == third) {
+                    break;
+                }
+                if (nums[second] + nums[third] == target) {
+                    List<Integer> list = new ArrayList<Integer>();
+                    list.add(nums[first]);
+                    list.add(nums[second]);
+                    list.add(nums[third]);
+                    ans.add(list);
                 }
             }
         }
-        return new ArrayList<>(result);
+        return ans;
     }
 }
