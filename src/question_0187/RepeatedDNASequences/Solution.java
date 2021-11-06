@@ -3,9 +3,9 @@ package question_0187.RepeatedDNASequences;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 /**
  * The DNA sequence is composed of a series of nucleotides abbreviated as 'A', 'C', 'G', and 'T'.
@@ -36,17 +36,17 @@ public class Solution {
 
 
     public List<String> findRepeatedDnaSequences(String s) {
-        if (s.length() < 10) {
-            return new ArrayList<>();
-        }
-        Set<String> set = new HashSet<>();
-        for (int i = 0; i < s.length() - 10; i++) {
-            String temp = s.substring(i, i + 10);
-            if (KMP(s.substring(i + 1), temp) != -1) {
-                set.add(temp);
+        List<String> ans = new ArrayList<String>();
+        Map<String, Integer> cnt = new HashMap<String, Integer>();
+        int n = s.length();
+        for (int i = 0; i <= n - 10; ++i) {
+            String sub = s.substring(i, i + 10);
+            cnt.put(sub, cnt.getOrDefault(sub, 0) + 1);
+            if (cnt.get(sub) == 2) {
+                ans.add(sub);
             }
         }
-        return new ArrayList<>(set);
+        return ans;
     }
 
     /**
