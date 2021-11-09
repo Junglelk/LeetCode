@@ -2,9 +2,6 @@ package question_0160.IntersectionOfTwoLinkedLists;
 
 import other.ListNode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
  * <p>
@@ -24,18 +21,12 @@ public class Solution {
         if (headA == null || headB == null) {
             return null;
         }
-        Set<ListNode> set = new HashSet<>();
-        while (headA != null) {
-            set.add(headA);
-            headA = headA.next;
+        ListNode pA = headA, pB = headB;
+        // 仿佛前后追逐一般
+        while (pA != pB) {
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
         }
-        while (headB != null) {
-            if (set.contains(headB)) {
-                return headB;
-            }
-            set.add(headB);
-            headB = headB.next;
-        }
-        return null;
+        return pA;
     }
 }
