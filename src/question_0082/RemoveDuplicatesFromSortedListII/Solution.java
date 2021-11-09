@@ -33,20 +33,22 @@ public class Solution {
 
 
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode first, second;
-        first = head;
-        second = head.next;
-        while (first != second && first!=null && second !=null) {
-            if (first.val != second.val) {
-                first = first.next;
-                second = second.next;
-            } else {
-                while (first.val == second.val) {
-                    second = second.next;
+        if (head == null) {
+            return null;
+        }
+
+        ListNode dummy = new ListNode(0, head);
+        ListNode pointer = dummy;
+        while (pointer.next != null && pointer.next.next != null) {
+            if (pointer.next.val == pointer.next.next.val) {
+                int x = pointer.next.val;
+                while (pointer.next != null && pointer.next.val == x) {
+                    pointer.next = pointer.next.next;
                 }
-                first.next = second;
+            } else {
+                pointer = pointer.next;
             }
         }
-        return head;
+        return dummy.next;
     }
 }
