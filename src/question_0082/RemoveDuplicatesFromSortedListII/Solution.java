@@ -36,8 +36,7 @@ public class Solution {
         if (head == null) {
             return null;
         }
-
-        ListNode dummy = new ListNode(0, head);
+        ListNode dummy = new ListNode(-1, head);
         ListNode pointer = dummy;
         while (pointer.next != null && pointer.next.next != null) {
             if (pointer.next.val == pointer.next.next.val) {
