@@ -21,9 +21,8 @@ public class Solution {
         List<List<Integer>> list = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             List<Integer> temp = new ArrayList<>();
-            // 这里不能使用queue.size() 因为下面这个的长度会变化
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
