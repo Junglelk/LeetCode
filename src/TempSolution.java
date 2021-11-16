@@ -10,5 +10,4 @@ public class TempSolution {
     public void test() {
 
     }
-
 }
