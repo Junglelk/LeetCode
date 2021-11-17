@@ -1,5 +1,6 @@
 package question_0002.AddTwoNumbers;
 
+import org.junit.Test;
 import other.ListNode;
 
 /**
@@ -21,23 +22,33 @@ import other.ListNode;
  * @since 2021/11/7 10:24
  */
 public class Solution {
+    @Test
+    public void test() {
+        System.out.println(addTwoNumbers(new ListNode(9, new ListNode(1, new ListNode(9))), new ListNode(8, new ListNode(2))));
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result_head = new ListNode(0);
-        ListNode p = l1, q = l2, j = result_head;
+        ListNode resultHead = new ListNode(0);
+        ListNode j = resultHead;
         int carry = 0;
-        while (p != null || q != null) {
-            int x = (p != null) ? p.val : 0;
-            int y = (q != null) ? q.val : 0;
-            int sum = x + y + carry;
+        while (l1 != null || l2 != null) {
+            int a = l1 == null ? 0 : l1.val;
+            int b = l2 == null ? 0 : l2.val;
+            int sum = a + b + carry;
             j.next = new ListNode(sum % 10);
             j = j.next;
             carry = sum / 10;
-            if (p != null) p = p.next;
-            if (q != null) q = q.next;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
         }
         if (carry > 0) {
             j.next = new ListNode(carry);
         }
-        return result_head.next;
+
+        return resultHead.next;
     }
 }
