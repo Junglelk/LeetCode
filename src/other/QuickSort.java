@@ -21,8 +21,9 @@ public class QuickSort {
     }
 
     public static void quickSort(int[] ary, int lo, int hi) {
-        if (lo >= hi)
+        if (lo >= hi) {
             return;
+        }
         int j = partition(ary, lo, hi);
         //处理左侧
         quickSort(ary, lo, j - 1);
