@@ -29,16 +29,22 @@ public class Solution {
 
 
     public boolean find132pattern(int[] nums) {
+        int point = 0;
+        int times = 0;
         for (int i = 0; i < nums.length - 2; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] < nums[j]) {
-                    for (int k = i + 1; k < j; k++) {
-                        if (nums[k] > nums[i] && nums[k] > nums[j]) {
-                            return true;
-                        }
+                    times++;
+                    if (times < 2) {
+                        point = j;
+                        continue;
+                    }
+                    if (nums[point] > nums[j]) {
+                        return true;
                     }
                 }
             }
+
         }
         return false;
     }
