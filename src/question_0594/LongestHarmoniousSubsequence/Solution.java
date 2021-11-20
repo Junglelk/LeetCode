@@ -2,6 +2,8 @@ package question_0594.LongestHarmoniousSubsequence;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * We define a harmonious array as an array where the difference between its maximum value and its minimum value is exactly 1.
  * <p>
@@ -36,19 +38,17 @@ public class Solution {
 
 
     public int findLHS(int[] nums) {
-        int length = 0;
-        int result = Integer.MIN_VALUE;
-        for (int i = 0; i < nums.length - 1; i++) {
-            int temp = nums[i];
-            length++;
-            for (int j = i + 1; j < nums.length; j++) {
-                if (temp == nums[j] || temp == nums[j] + 1) {
-                    length++;
-                }
+        Arrays.sort(nums);
+        int n = nums.length;
+        int ans = 0;
+        for (int i = 0, j = 0; j < n; j++) {
+            while (i < j && nums[j] - nums[i] > 1) {
+                i++;
             }
-            result = Math.max(length, result);
-            length = 0;
+            if (nums[j] - nums[i] == 1) {
+                ans = Math.max(ans, j - i + 1);
+            }
         }
-        return result;
+        return ans;
     }
 }
