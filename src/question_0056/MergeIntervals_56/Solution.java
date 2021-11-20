@@ -47,15 +47,15 @@ public class Solution {
         }
         Arrays.sort(intervals, Comparator.comparingInt(interval -> interval[0]));
         List<int[]> merged = new ArrayList<>();
-        for (int i = 0; i < intervals.length; i++) {
-            int L = intervals[i][0];
-            int R = intervals[i][1];
-            if (merged.size() == 0 || merged.get(merged.size() - 1)[1] < L) {
+        for (int[] interval : intervals) {
+            int L = interval[0];
+            int R = interval[1];
+            // 排序后从左向右合并，最后一个元素始终是待合并的那个
+            if (merged.isEmpty() || merged.get(merged.size() - 1)[1] < L) {
                 merged.add(new int[]{L, R});
             } else {
                 merged.get(merged.size() - 1)[1] = Math.max(merged.get(merged.size() - 1)[1], R);
             }
-
         }
         return merged.toArray(new int[merged.size()][]);
     }
