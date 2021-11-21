@@ -42,6 +42,7 @@ package competition.medium.competition_5186.RangeFrequencyQueries;
 public class Solution {
 
 }
+// TODO 显然的非正式解，但我不想看正解了
 class RangeFreqQuery {
 
     private int[] arr;
