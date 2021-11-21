@@ -1,4 +1,5 @@
 package normal.easy.question_0559.MaximumDepthOfNaryTree;
+
 import other.Node;
 
 /**
@@ -26,6 +27,13 @@ import other.Node;
  */
 public class Solution {
     public int maxDepth(Node root) {
-        return 0;
+        if (root == null) {
+            return 0;
+        }
+        int ans = 0;
+        for (Node child : root.children) {
+            ans = Math.max(ans, maxDepth(child));
+        }
+        return ans + 1;
     }
 }
