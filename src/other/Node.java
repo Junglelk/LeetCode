@@ -6,7 +6,7 @@ import java.util.List;
  * @author Jungle
  * @since 2021/11/21 10:26
  */
-class Node {
+public class Node {
     public int val;
     public List<Node> children;
 
