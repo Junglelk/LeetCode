@@ -27,12 +27,8 @@ package normal.easy.question_0859.BuddyStrings;
  */
 public class Solution {
     public boolean buddyStrings(String s, String goal) {
-
         if (s.length() != goal.length()) {
             return false;
-        }
-        if (s.length() == 2) {
-            return s.equals(goal) || (s.charAt(0) == goal.charAt(1) && s.charAt(1) == goal.charAt(0));
         }
         int nums = 0;
         int temp1 = Integer.MAX_VALUE;
@@ -42,14 +38,16 @@ public class Solution {
             int c1 = goal.charAt(i) - 'a';
             temp1 ^= c;
             temp2 ^= c1;
+            // 保证不相同的只有两个
             if ((c ^ c1) != 0) {
                 nums++;
             }
         }
+        // 保证两字符串由一样的字符组成
         if (temp1 != temp2) {
             return false;
         }
-        return nums == 2;
+        return nums == 2 || (nums == 0 && !s.equals(goal));
     }
 
 }
