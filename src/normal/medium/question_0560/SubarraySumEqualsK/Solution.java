@@ -1,4 +1,4 @@
-package normal.question_0560.SubarraySumEqualsK;
+package normal.medium.question_0560.SubarraySumEqualsK;
 
 import org.junit.Test;
 
