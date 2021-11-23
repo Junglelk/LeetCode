@@ -1,5 +1,7 @@
 package normal.easy.question_0859.BuddyStrings;
 
+import org.junit.Test;
+
 /**
  * Given two strings s and goal, return true if you can swap two letters in s so the result is equal to goal, otherwise, return false.
  * <p>
@@ -26,28 +28,40 @@ package normal.easy.question_0859.BuddyStrings;
  * @since 2021/11/23 21:17
  */
 public class Solution {
+    @Test
+    public void test() {
+        System.out.println(buddyStrings("abbc", "abbc"));
+    }
+
+
     public boolean buddyStrings(String s, String goal) {
-        if (s.length() != goal.length()) {
+        int n = s.length(), m = goal.length();
+        if (n != m) {
             return false;
         }
-        int nums = 0;
-        int temp1 = Integer.MAX_VALUE;
-        int temp2 = Integer.MAX_VALUE;
-        for (int i = 0; i < s.length(); i++) {
-            int c = s.charAt(i) - 'a';
-            int c1 = goal.charAt(i) - 'a';
-            temp1 ^= c;
-            temp2 ^= c1;
-            // 保证不相同的只有两个
-            if ((c ^ c1) != 0) {
-                nums++;
+        int[] cnt1 = new int[26];
+        int[] cnt2 = new int[26];
+        int sum = 0;
+        // 统计
+        for (int i = 0; i < n; i++) {
+            int a = s.charAt(i) - 'a';
+            int b = goal.charAt(i) - 'a';
+            cnt1[a]++;
+            cnt2[b]++;
+            if (a != b) {
+                sum++;
             }
         }
-        // 保证两字符串由一样的字符组成
-        if (temp1 != temp2) {
-            return false;
+        boolean ok = false;
+        for (int i = 0; i < 26; i++) {
+            if (cnt1[i] != cnt2[i]) {
+                return false;
+            }
+            if (cnt1[i] > 1) {
+                ok = true;
+            }
         }
-        return nums == 2 || (nums == 0 && !s.equals(goal));
+        return sum == 2 || (sum == 0 && ok);
     }
 
 }
