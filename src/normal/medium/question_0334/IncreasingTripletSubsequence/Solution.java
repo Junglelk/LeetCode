@@ -1,4 +1,4 @@
-package normal.question_0334.IncreasingTripletSubsequence;
+package normal.medium.question_0334.IncreasingTripletSubsequence;
 
 import org.junit.Test;
 
