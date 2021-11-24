@@ -1,8 +1,6 @@
 package normal.medium.question_0423.ReconstructOriginalDigitsFromEnglish;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Given a string s containing an out-of-order English representation of digits 0-9, return the digits in ascending order.
@@ -21,30 +19,18 @@ import java.util.Map;
  * @since 2021/11/24 21:20
  */
 public class Solution {
-    static Map<String, Integer> map = new HashMap<>();
-
-    static {
-        map.put("zero", 0);
-        map.put("one", 1);
-        map.put("two", 2);
-        map.put("three", 3);
-        map.put("four", 4);
-        map.put("five", 5);
-        map.put("six", 6);
-        map.put("seven", 7);
-        map.put("eight", 8);
-        map.put("nine", 9);
-    }
-
     public String originalDigits(String s) {
         int[] cnts = new int[26];
         for (int i = 0; i < s.length(); i++) {
             cnts[s.charAt(i) - 'a']++;
         }
+        String[] strings = new String[]{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        // 这个排列每次去掉一个能够唯一确定的数字
+        int[] nums = new int[]{0, 8, 6, 3, 2, 7, 5, 9, 4, 1};
         StringBuilder stb = new StringBuilder();
-        for (String num : map.keySet()) {
+        for (int num : nums) {
             int k = Integer.MAX_VALUE;
-            char[] chars = num.toCharArray();
+            char[] chars = strings[num].toCharArray();
             for (char c : chars) {
                 k = Math.min(k, cnts[c - 'a']);
             }
@@ -52,7 +38,7 @@ public class Solution {
                 cnts[c - 'a'] -= k;
             }
             while (k-- > 0) {
-                stb.append(map.get(num));
+                stb.append(num);
             }
         }
         char[] chars = stb.toString().toCharArray();
