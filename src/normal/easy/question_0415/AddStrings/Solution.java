@@ -1,4 +1,4 @@
-package normal.question_0415.AddStrings;
+package normal.easy.question_0415.AddStrings;
 
 import org.junit.Test;
 
@@ -21,25 +21,25 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(addStrings("123","127"));
+        System.out.println(addStrings("123", "127"));
     }
 
 
-
     public String addStrings(String num1, String num2) {
-        int i = num1.length() - 1, j = num2.length() - 1, add = 0;
-        StringBuffer ans = new StringBuffer();
-        while (i >= 0 || j >= 0 || add != 0) {
-            int x = i >= 0 ? num1.charAt(i) - '0' : 0;
-            int y = j >= 0 ? num2.charAt(j) - '0' : 0;
-            int result = x + y + add;
-            ans.append(result % 10);
-            add = result / 10;
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        StringBuilder result = new StringBuilder();
+        int ad = 0;
+        while (i >= 0 || j >= 0) {
+            int a = i >= 0 ? num1.charAt(i) - '0' : 0;
+            int b = j >= 0 ? num2.charAt(j) - '0' : 0;
+            int temp = a + b + ad;
+            result.append(temp % 10);
+            ad = temp / 10;
             i--;
             j--;
         }
-        // 计算完以后的答案需要翻转过来
-        ans.reverse();
-        return ans.toString();
+        result.reverse();
+        return result.toString();
     }
 }
