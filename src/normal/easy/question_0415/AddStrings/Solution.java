@@ -30,7 +30,7 @@ public class Solution {
         int j = num2.length() - 1;
         StringBuilder result = new StringBuilder();
         int ad = 0;
-        while (i >= 0 || j >= 0) {
+        while (i >= 0 || j >= 0 || ad != 0) {
             int a = i >= 0 ? num1.charAt(i) - '0' : 0;
             int b = j >= 0 ? num2.charAt(j) - '0' : 0;
             int temp = a + b + ad;
