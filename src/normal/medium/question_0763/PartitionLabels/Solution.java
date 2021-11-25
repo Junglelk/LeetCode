@@ -1,4 +1,4 @@
-package normal.question_0763.PartitionLabels;
+package normal.medium.question_0763.PartitionLabels;
 
 import java.util.ArrayList;
 import java.util.List;

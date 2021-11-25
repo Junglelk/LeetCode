@@ -1,4 +1,4 @@
-package normal.question_0290.WordPattern;
+package normal.easy.question_0290.WordPattern;
 
 import org.junit.Test;
 
