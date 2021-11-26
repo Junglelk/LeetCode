@@ -1,4 +1,4 @@
-package normal.question_0049.GroupAnagrams;
+package normal.medium.question_0049.GroupAnagrams;
 
 import java.util.*;
 

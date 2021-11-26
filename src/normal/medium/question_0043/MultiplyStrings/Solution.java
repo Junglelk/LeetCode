@@ -1,4 +1,4 @@
-package normal.question_0043.MultiplyStrings;
+package normal.medium.question_0043.MultiplyStrings;
 
 import org.junit.Test;
 
