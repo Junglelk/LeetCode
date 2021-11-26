@@ -18,7 +18,7 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(multiply("1234", "9541"));
+        System.out.println(multiply("43", "29"));
     }
 
 
@@ -32,7 +32,6 @@ public class Solution {
             int n1 = num1.charAt(i) - '0';
             for (int j = num2.length() - 1; j >= 0; j--) {
                 int n2 = num2.charAt(j) - '0';
-                // 前一位的进位
                 int k = res[i + j + 1];
                 int sum = (k + n1 * n2);
                 res[i + j + 1] = sum % 10;
@@ -42,7 +41,9 @@ public class Solution {
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < res.length; i++) {
-            if (i == 0 && res[i] == 0) continue;
+            if (i == 0 && res[i] == 0) {
+                continue;
+            }
             result.append(res[i]);
         }
         return result.toString();
