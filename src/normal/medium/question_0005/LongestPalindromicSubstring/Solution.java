@@ -19,25 +19,22 @@ public class Solution {
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         String ans = "";
-        // 最外层循环做假设：最长字串为K
-        for (int K = 0; K < n; ++K) {
-            for (int i = 0; i + K < n; ++i) {
-                // 每次都以假设最长为K开始从头循环，结合外层K值防止数组越界
-                int j = i + K;
-                if (K == 0) {
-                    //只有一个元素
+        // top为最长回文串的长度,由于下标从 0 开始，所以top从 0 开始意为单个字母
+        for (int top = 0; top < n; top++) {
+            for (int i = 0; i + top < n; i++) {
+                int j = i + top;
+                if (top == 0) {
                     dp[i][j] = true;
                 } else {
-                    boolean b = s.charAt(i) == s.charAt(j);
-                    if (K == 1) {
-                        dp[i][j] = b;
+                    boolean temp = s.charAt(i) == s.charAt(j);
+                    if (top == 1) {
+                        dp[i][j] = temp;
                     } else {
-                        //状态转移方程，只有当前两字母相等，且其内部序列也为回文时，对应位置的状态为true
-                        dp[i][j] = (b && dp[i + 1][j - 1]);
+                        dp[i][j] = temp && dp[i + 1][j - 1];
                     }
                 }
-                if (dp[i][j] && K + 1 > ans.length()) {
-                    ans = s.substring(i, i + K + 1);
+                if (dp[i][j] && top + 1 > ans.length()) {
+                    ans = s.substring(i, i + top + 1);
                 }
             }
         }
