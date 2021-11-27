@@ -1,4 +1,4 @@
-package normal.question_0187.RepeatedDNASequences;
+package normal.medium.question_0187.RepeatedDNASequences;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package normal.question_0005.LongestPalindromicSubstring;
+package normal.medium.question_0005.LongestPalindromicSubstring;
 
 /**
  * Given a string s, return the longest palindromic substring in s.
