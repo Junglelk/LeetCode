@@ -1,4 +1,4 @@
-package normal.question_0002.AddTwoNumbers;
+package normal.medium.question_0002.AddTwoNumbers;
 
 import other.ListNode;
 
@@ -22,22 +22,22 @@ import other.ListNode;
  */
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result_head = new ListNode(0);
-        ListNode p = l1, q = l2, j = result_head;
-        int carry = 0;
-        while (p != null || q != null) {
-            int x = (p != null) ? p.val : 0;
-            int y = (q != null) ? q.val : 0;
-            int sum = x + y + carry;
-            j.next = new ListNode(sum % 10);
-            j = j.next;
-            carry = sum / 10;
-            if (p != null) p = p.next;
-            if (q != null) q = q.next;
+        ListNode result = new ListNode();
+        ListNode pointer = result;
+        int ad = 0;
+        while (l1 != null || l2 != null) {
+            int a = l1 == null ? 0 : l1.val;
+            int b = l2 == null ? 0 : l2.val;
+            int temp = a + b + ad;
+            ad = temp / 10;
+            pointer.next = new ListNode(temp % 10);
+            pointer = pointer.next;
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
         }
-        if (carry > 0) {
-            j.next = new ListNode(carry);
+        if (ad != 0) {
+            pointer.next = new ListNode(ad);
         }
-        return result_head.next;
+        return result.next;
     }
 }
