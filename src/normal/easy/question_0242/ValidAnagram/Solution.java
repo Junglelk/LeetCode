@@ -1,7 +1,5 @@
 package normal.easy.question_0242.ValidAnagram;
 
-import java.util.Arrays;
-
 /**
  * Given two strings s and t, return true if t is an anagram of s, and false otherwise.
  * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
@@ -19,12 +17,16 @@ public class Solution {
         if (s.length() != t.length()) {
             return false;
         }
-        char[] chars = s.toCharArray();
-        char[] chart = t.toCharArray();
-        Arrays.sort(chars);
-        Arrays.sort(chart);
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] != chart[i]) {
+        int[] a = new int[26];
+        int[] b = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            a[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < t.length(); i++) {
+            b[t.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (a[i] != b[i]) {
                 return false;
             }
         }
