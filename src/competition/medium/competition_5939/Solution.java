@@ -38,30 +38,21 @@ public class Solution {
         }
         int r = 2 * k + 1;
         int[] list = new int[nums.length];
+        Arrays.fill(list, -1);
         if (r > nums.length) {
-            Arrays.fill(list, -1);
             return list;
         }
-        if (r == nums.length) {
-            int sum = 0;
-            for (int num : nums) {
-                sum += num;
-            }
-            list[r / 2] = sum / r;
-            Arrays.fill(list, 0, r / 2, -1);
-            Arrays.fill(list, r / 2, list.length, -1);
-        }
+        long sum = 0;
+        int length = 0;
         for (int i = 0; i < nums.length; i++) {
-            int[] temp = new int[r];
-            if (i - k < 0 || i + k >= nums.length) {
-                list[i] = -1;
-            } else {
-                System.arraycopy(nums, i - k, temp, 0, r);
-                int sum = 0;
-                for (int num : temp) {
-                    sum += num;
-                }
-                list[i] = sum / r;
+            sum += nums[i];
+            length++;
+            if (length > r) {
+                sum -= nums[i - r];
+                length--;
+            }
+            if (length == r) {
+                list[i - k] = (int) (sum / length);
             }
         }
         return list;
