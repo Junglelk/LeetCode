@@ -1,4 +1,4 @@
-package normal.question_0242.ValidAnagram;
+package normal.easy.question_0242.ValidAnagram;
 
 import java.util.Arrays;
 
