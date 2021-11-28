@@ -3,6 +3,7 @@ package normal.medium.question_0438.FindAllAnagramsInAString;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,30 +43,25 @@ public class Solution {
         }
 
         int n = p.length();
-        int[] chars = new int[26];
-        int[] chars1 = new int[26];
-        for (int i = 0; i < p.length(); i++) {
-            chars[p.charAt(i) - 'a']++;
-        }
-        int length = 0;
-        for (int i = 0; i < s.length(); i++) {
-            chars1[s.charAt(i) - 'a']++;
-            length++;
-            if (length > n) {
-                chars1[s.charAt(i) - 'a']--;
-                length--;
+        for (int i = 0; i < s.length() - n + 1; i++) {
+            String temp = s.substring(i, i + n);
+            if (isAnagram(temp, p)) {
+                ans.add(i);
             }
-            if (isAnagram(chars1, chars)) {
-                ans.add(i - n + 1);
-            }
-
         }
         return ans;
     }
 
-    boolean isAnagram(int[] s, int[] p) {
-        for (int i = 0; i < s.length; i++) {
-            if (s[i] != p[i]) {
+    boolean isAnagram(String s, String p) {
+        if (s.length() != p.length()) {
+            return false;
+        }
+        char[] charS = s.toCharArray();
+        char[] charP = p.toCharArray();
+        Arrays.sort(charP);
+        Arrays.sort(charS);
+        for (int i = 0; i < charP.length; i++) {
+            if (charP[i] != charS[i]) {
                 return false;
             }
         }
