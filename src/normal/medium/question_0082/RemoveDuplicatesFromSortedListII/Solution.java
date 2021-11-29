@@ -1,4 +1,4 @@
-package normal.question_0082.RemoveDuplicatesFromSortedListII;
+package normal.medium.question_0082.RemoveDuplicatesFromSortedListII;
 
 import org.junit.Test;
 import other.ListNode;
@@ -27,7 +27,7 @@ public class Solution {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(3);
         head.next.next.next.next = new ListNode(4);
-
+        System.out.println(head);
         System.out.println(deleteDuplicates(head));
     }
 
@@ -37,15 +37,14 @@ public class Solution {
             return null;
         }
         ListNode dummy = new ListNode(-1, head);
-        ListNode pointer = dummy;
-        while (pointer.next != null && pointer.next.next != null) {
-            if (pointer.next.val == pointer.next.next.val) {
-                int x = pointer.next.val;
-                while (pointer.next != null && pointer.next.val == x) {
-                    pointer.next = pointer.next.next;
+        while (head.next != null && head.next.next != null) {
+            if (head.next.val == head.next.next.val) {
+                int x = head.next.val;
+                while (head.next.next != null && head.next.next.val == x) {
+                    head.next = head.next.next;
                 }
             } else {
-                pointer = pointer.next;
+                head.next = head.next.next;
             }
         }
         return dummy.next;
