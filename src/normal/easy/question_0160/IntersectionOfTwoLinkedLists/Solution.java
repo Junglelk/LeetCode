@@ -24,8 +24,8 @@ public class Solution {
         ListNode pA = headA;
         ListNode pB = headB;
         while (pA != pB) {
-            pA = pA == null ? pB : pA.next;
-            pB = pB == null ? pA : pB.next;
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
         }
         return pA;
     }
