@@ -1,4 +1,4 @@
-package normal.question_0160.IntersectionOfTwoLinkedLists;
+package normal.easy.question_0160.IntersectionOfTwoLinkedLists;
 
 import other.ListNode;
 
@@ -21,11 +21,11 @@ public class Solution {
         if (headA == null || headB == null) {
             return null;
         }
-        ListNode pA = headA, pB = headB;
-        // 仿佛前后追逐一般
+        ListNode pA = headA;
+        ListNode pB = headB;
         while (pA != pB) {
-            pA = pA == null ? headB : pA.next;
-            pB = pB == null ? headA : pB.next;
+            pA = pA == null ? pB : pA.next;
+            pB = pB == null ? pA : pB.next;
         }
         return pA;
     }
