@@ -37,16 +37,16 @@ public class Solution {
             return null;
         }
         ListNode dummy = new ListNode(-1, head);
-        // 这种写法头节点会被删除时就无法处理
         ListNode p = dummy;
         while (p.next != null && p.next.next != null) {
             if (p.next.val == p.next.next.val) {
                 int val = p.next.val;
-                while (p.next.next != null && p.next.next.val == val) {
+                // 其实仅仅是加了头节点的迭代，我又多考虑了额外的边界条件
+                while (p.next != null && p.next.val == val) {
                     p.next = p.next.next;
                 }
-            }else {
-                p.next = p.next.next;
+            } else {
+                p = p.next;
             }
         }
         return dummy.next;
