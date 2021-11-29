@@ -37,14 +37,16 @@ public class Solution {
             return null;
         }
         ListNode dummy = new ListNode(-1, head);
-        while (head.next != null && head.next.next != null) {
-            if (head.next.val == head.next.next.val) {
-                int x = head.next.val;
-                while (head.next.next != null && head.next.next.val == x) {
-                    head.next = head.next.next;
+        // 这种写法头节点会被删除时就无法处理
+        ListNode p = dummy;
+        while (p.next != null && p.next.next != null) {
+            if (p.next.val == p.next.next.val) {
+                int val = p.next.val;
+                while (p.next.next != null && p.next.next.val == val) {
+                    p.next = p.next.next;
                 }
-            } else {
-                head.next = head.next.next;
+            }else {
+                p.next = p.next.next;
             }
         }
         return dummy.next;
