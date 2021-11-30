@@ -1,4 +1,4 @@
-package normal.question_0024.SwapNodesInPairs;
+package normal.medium.question_0024.SwapNodesInPairs;
 
 import org.junit.Test;
 import other.ListNode;
@@ -31,16 +31,18 @@ public class Solution {
      * @return 返回节点
      */
     public ListNode swapPairs(ListNode head) {
-        ListNode node = new ListNode(0, head);
-        ListNode temp = node;
-        while (temp.next != null && temp.next.next != null) {
-            ListNode ptr1 = temp.next;
-            ListNode ptr2 = temp.next.next;
-            temp.next = ptr2;
-            ptr1.next = ptr2.next;
-            temp = ptr1;
+        ListNode dummy = new ListNode(-1, head);
+        ListNode p = dummy;
+        while (p.next != null && p.next.next != null) {
+            ListNode p1 = p.next;
+            ListNode p2 = p.next.next;
+            // 这就像是交换数组的两个元素一样
+            p.next = p2;
+            p1.next = p2.next;
+            p2.next = p1;
+            p = p1;
         }
-        return node.next;
+        return dummy.next;
     }
 
 }
