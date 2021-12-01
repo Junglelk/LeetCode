@@ -3,9 +3,6 @@ package normal.medium.question_0143.ReorderList;
 import org.junit.Test;
 import other.ListNode;
 
-import java.util.Deque;
-import java.util.LinkedList;
-
 /**
  * You are given the head of a singly linked-list. The list can be represented as:
  * <pre>
@@ -39,57 +36,62 @@ public class Solution {
 
     @Test
     public void test() {
-        reorderList(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
+        reorderList(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6, new ListNode(7))))))));
     }
 
-
     public void reorderList(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return;
         }
-
-        ListNode p = head.next;
-        Deque<ListNode> stack = new LinkedList<>();
-        int a = 0;
-        while (p != null) {
-            p = p.next;
-            a++;
-        }
-        p = head.next;
-        int count = a % 2 == 0 ? a / 2 : a / 2 + 1;
-        a = 0;
-        while (p != null) {
-            a++;
-            if (a == count - 1) {
-                p = p.next;
-                while (count != -1) {
-                    ListNode temp = p;
-                    if (p == null) {
-                        break;
-                    }
-                    p = p.next;
-                    temp.next = null;
-                    stack.push(temp);
-                    count--;
-                }
-                break;
-            }
-            p = p.next;
-        }
-        p = head;
-        a = 0;
-        while (stack.size() != 1) {
-            if (a == 0) {
-                ListNode temp = p.next;
-                p.next = stack.pop();
-                p = p.next;
-                p.next = temp;
-                a--;
-            } else {
-                p = p.next;
-                a++;
-            }
-        }
+        ListNode mid = middleNode(head);
+        ListNode l1 = head;
+        ListNode l2 = mid.next;
+        mid.next = null;
+        l2 = reverseList(l2);
+        mergeList(l1, l2);
         System.out.println(head);
+    }
+
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev;
+    }
+
+    public void mergeList(ListNode l1, ListNode l2) {
+        ListNode l1_tmp;
+        ListNode l2_tmp;
+        while (l1 != null && l2 != null) {
+            // 取下l1
+            l1_tmp = l1.next;
+            // 取下l2
+            l2_tmp = l2.next;
+
+            // l1指向l2
+            l1.next = l2;
+            // 恢复l1
+            l1 = l1_tmp;
+
+            // l2 指向l1
+            l2.next = l1;
+            // 恢复l2
+            l2 = l2_tmp;
+        }
     }
 }
