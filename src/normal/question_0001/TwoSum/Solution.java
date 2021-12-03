@@ -18,15 +18,14 @@ import java.util.Map;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/two-sum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ * @author mk
  */
-public
-class Solution {
+public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new HashMap<>(16);
         for (int i = 0; i < nums.length; i++) {
             int the_key = target - nums[i];
             if (map.containsKey(the_key)) {
-
                 return new int[]{map.get(the_key), i};
             }
             map.put(nums[i], i);
