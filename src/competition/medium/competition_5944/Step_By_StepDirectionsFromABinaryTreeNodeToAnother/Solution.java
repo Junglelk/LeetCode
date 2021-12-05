@@ -1,9 +1,7 @@
 package competition.medium.competition_5944.Step_By_StepDirectionsFromABinaryTreeNodeToAnother;
 
+import org.junit.Test;
 import other.TreeNode;
-
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * You are given the root of a binary tree with n nodes. Each node is uniquely assigned a value from 1 to n. You are also given an integer startValue representing the value of the start node s, and a different integer destValue representing the value of the destination node t.
@@ -32,53 +30,18 @@ import java.util.Queue;
  * @since 2021/12/5 15:08
  */
 public class Solution {
-    public String getDirections(TreeNode root, int startValue, int destValue) {
-        TreeNode ancestor = ancestor(root, startValue, destValue);
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(ancestor);
-        StringBuilder ret = new StringBuilder();
-        String ans = "";
-        ans += findNode(ancestor, ret, startValue, "U", "U");
-        ans += findNode(ancestor, ret, destValue, "L", "R");
-        return ans;
+
+    @Test
+    public void test() {
+        TreeNode root = new TreeNode();
+        root.left = new TreeNode(1).left = new TreeNode(3);
+        root.right = new TreeNode(2).left = new TreeNode(4);
+        root.right.left = new TreeNode(6);
+        System.out.println(getDirections(root, 3, 6));
     }
 
-    public String findNode(TreeNode node, StringBuilder ret, int target, String left, String right) {
-        if (node.val == target) {
-            return ret.toString();
-        }
-        if (node.left != null) {
-            ret.append(left);
-            ret.append(findNode(node.left, ret, target, left, right));
-        }
-        if (node.right != null) {
-            ret.append(right);
-            ret.append(findNode(node.right, ret, target, left, right));
-        }
-        return ret.toString();
+    String getDirections(TreeNode root, int s, int d) {
+
+        return "";
     }
-
-
-    public TreeNode ancestor(TreeNode root, int startValue, int destValue) {
-        if (root == null || root.val == startValue || root.val == destValue) {
-            return root;
-        }
-        //分而
-        //这里主要用来找根节点子树是否有A或B节点；因为有可能A或B在一侧或者各自在一侧，这是都有可能的。
-        TreeNode left = ancestor(root.left, startValue, destValue);
-        TreeNode right = ancestor(root.right, startValue, destValue);
-        //治之
-        //如果这个节点不是A或B的话就返回该节点，然后继续往下搜索
-        if (left != null && right != null) {
-            return root;
-        }
-        if (left != null) {
-            return left;
-        }
-        if (right != null) {
-            return right;
-        }
-        return null;
-    }
-
 }
