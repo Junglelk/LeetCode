@@ -20,15 +20,18 @@ public class Solution {
     public int kthSmallest(TreeNode root, int k) {
         Deque<TreeNode> stack = new LinkedList<>();
         while (root != null || !stack.isEmpty()) {
+            // 第一次遇到root，在这里访问root为前序
             while (root != null) {
                 stack.push(root);
                 root = root.left;
             }
+            // 第二次遇到root，在这里访问为中序
             root = stack.pop();
             --k;
             if (k == 0) {
                 break;
             }
+            // 第三次遇到root，在这里访问为后序
             root = root.right;
         }
         return root.val;
