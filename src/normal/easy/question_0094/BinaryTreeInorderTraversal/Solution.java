@@ -1,4 +1,4 @@
-package normal.question_0094.BinaryTreeInorderTraversal;
+package normal.easy.question_0094.BinaryTreeInorderTraversal;
 
 import other.TreeNode;
 
