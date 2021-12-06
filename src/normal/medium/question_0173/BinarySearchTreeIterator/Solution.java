@@ -34,7 +34,11 @@ import java.util.List;
  * @author Jungle
  * @since 2021/12/6 22:24
  */
-public class BSTIterator {
+public class Solution {
+
+}
+
+class BSTIterator {
 
     private List<Integer> arr;
     private int index;
@@ -59,6 +63,6 @@ public class BSTIterator {
     }
 
     public boolean hasNext() {
-        return index > arr.size();
+        return index < arr.size();
     }
 }
