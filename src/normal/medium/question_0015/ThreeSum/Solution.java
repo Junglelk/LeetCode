@@ -1,4 +1,4 @@
-package normal.question_0015.ThreeSum;
+package normal.medium.question_0015.ThreeSum;
 
 import org.junit.Test;
 

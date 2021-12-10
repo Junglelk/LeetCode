@@ -1,4 +1,4 @@
-package normal.question_0169.MajorityElement;
+package normal.easy.question_0169.MajorityElement;
 
 import java.util.Arrays;
 import java.util.HashMap;
