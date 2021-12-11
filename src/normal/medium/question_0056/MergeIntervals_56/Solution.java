@@ -1,4 +1,4 @@
-package normal.question_0056.MergeIntervals_56;
+package normal.medium.question_0056.MergeIntervals_56;
 
 import org.junit.Test;
 

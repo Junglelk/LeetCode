@@ -1,4 +1,4 @@
-package normal.question_0706.DesignHashMap;
+package normal.easy.question_0706.DesignHashMap;
 
 import org.junit.Test;
 

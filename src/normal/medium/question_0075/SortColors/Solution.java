@@ -1,4 +1,4 @@
-package normal.question_0075.SortColors;
+package normal.medium.question_0075.SortColors;
 
 import java.util.Arrays;
 
