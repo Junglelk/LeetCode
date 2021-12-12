@@ -44,26 +44,26 @@ public class TempSolution {
 
     public long subArrayRanges(int[] nums) {
         long sum = 0;
+        // 窗口大小
         for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j < nums.length - i; j ++) {
-                int[] temp = new int[i + 1];
-                System.arraycopy(nums, j, temp, 0, i + 1);
-                sum += getRange(temp);
+            int max = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
+            for (int j = 0; j < nums.length - i; j++) {
+                if (j == 0 || max == nums[j - 1] || min == nums[j - 1]) {
+                    max = Integer.MIN_VALUE;
+                    min = Integer.MAX_VALUE;
+                    for (int k = j; k <= j + i; k++) {
+                        max = Math.max(max, nums[k]);
+                        min = Math.min(min, nums[k]);
+                    }
+                } else {
+                    max = Math.max(max, nums[j + i]);
+                    min = Math.min(min, nums[j + i]);
+                }
+                sum += max - min;
             }
         }
         return sum;
     }
-
-    long getRange(int[] nums) {
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        for (int num : nums) {
-            max = Math.max(num, max);
-            min = Math.min(min, num);
-        }
-        return max - min;
-    }
-
-
 }
 
