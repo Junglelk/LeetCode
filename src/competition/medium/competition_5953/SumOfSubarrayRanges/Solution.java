@@ -21,27 +21,35 @@ package competition.medium.competition_5953.SumOfSubarrayRanges;
  * @since 2021/12/12 22:06
  */
 public class Solution {
-    // 可行解，但肉眼可见的高时间复杂度
+    /**
+     * 之前的方法会超时<br>
+     * 根本原因是没能理解滑动窗口，妄想通过数组复制作为银弹去解题，陷入了思维误区
+     *
+     * @param nums 数组
+     * @return 和
+     */
     public long subArrayRanges(int[] nums) {
         long sum = 0;
+        // 窗口大小
         for (int i = 1; i < nums.length; i++) {
-            for (int j = 0; j < nums.length - i; j ++) {
-                int[] temp = new int[i + 1];
-                System.arraycopy(nums, j, temp, 0, i + 1);
-                sum += getRange(temp);
+            int max = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
+            for (int j = 0; j < nums.length - i; j++) {
+                if (j == 0 || max == nums[j - 1] || min == nums[j - 1]) {
+                    max = Integer.MIN_VALUE;
+                    min = Integer.MAX_VALUE;
+                    for (int k = j; k <= j + i; k++) {
+                        max = Math.max(max, nums[k]);
+                        min = Math.min(min, nums[k]);
+                    }
+                } else {
+                    max = Math.max(max, nums[j + i]);
+                    min = Math.min(min, nums[j + i]);
+                }
+                sum += max - min;
             }
         }
         return sum;
-    }
-
-    long getRange(int[] nums) {
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        for (int num : nums) {
-            max = Math.max(num, max);
-            min = Math.min(min, num);
-        }
-        return max - min;
     }
 
 }
