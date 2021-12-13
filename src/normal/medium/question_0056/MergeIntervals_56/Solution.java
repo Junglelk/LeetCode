@@ -37,7 +37,7 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(Arrays.deepToString(merge(new int[][]{{5, 6}, {1, 3}, {4, 10}, {3, 18}})));
+        System.out.println(Arrays.deepToString(merge(new int[][]{{1,4},{0,4}})));
     }
 
 
@@ -45,18 +45,18 @@ public class Solution {
         if (intervals.length == 0) {
             return intervals;
         }
-        Arrays.sort(intervals, Comparator.comparingInt(interval -> interval[0]));
-        List<int[]> merged = new ArrayList<>();
+        // 这里应该是对对第一个元素排序，所以我写成了 i[1] 淦
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
+        List<int[]> merge = new ArrayList<>();
         for (int[] interval : intervals) {
             int L = interval[0];
             int R = interval[1];
-            // 排序后从左向右合并，最后一个元素始终是待合并的那个
-            if (merged.isEmpty() || merged.get(merged.size() - 1)[1] < L) {
-                merged.add(new int[]{L, R});
+            if (merge.isEmpty() || merge.get(merge.size() - 1)[1] < L) {
+                merge.add(new int[]{L, R});
             } else {
-                merged.get(merged.size() - 1)[1] = Math.max(merged.get(merged.size() - 1)[1], R);
+                merge.get(merge.size() - 1)[1] = Math.max(merge.get(merge.size() - 1)[1], R);
             }
         }
-        return merged.toArray(new int[merged.size()][]);
+        return merge.toArray(new int[merge.size()][]);
     }
 }
