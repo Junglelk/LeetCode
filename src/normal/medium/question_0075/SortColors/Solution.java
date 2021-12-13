@@ -1,5 +1,7 @@
 package normal.medium.question_0075.SortColors;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 /**
@@ -21,6 +23,14 @@ import java.util.Arrays;
  * @since 2021/10/30 16:25
  */
 public class Solution {
+
+    @Test
+    public void test() {
+        int[] nums = new int[]{0, 1, 1, 2, 1, 0, 2, 1, 1, 2, 0, 1, 2, 1, 0};
+        sortColorsNoApi(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
     public void sortColors(int[] nums) {
         Arrays.sort(nums);
     }
@@ -30,21 +40,23 @@ public class Solution {
         int p0 = 0, p1 = 0;
         for (int i = 0; i < n; ++i) {
             if (nums[i] == 1) {
-                int temp = nums[i];
-                nums[i] = nums[p1];
-                nums[p1] = temp;
-                ++p1;
+                int temp = nums[p1];
+                nums[p1] = nums[i];
+                nums[i] = temp;
+                p1++;
             } else if (nums[i] == 0) {
-                int temp = nums[i];
-                nums[i] = nums[p0];
-                nums[p0] = temp;
+                // 这一步由于 1 的头与 0 的尾紧挨着，所以可能会把 1 换到后面去
+                int temp = nums[p0];
+                nums[p0] = nums[i];
+                nums[i] = temp;
+                // 所以要在这里交换回来
                 if (p0 < p1) {
-                    temp = nums[i];
-                    nums[i] = nums[p1];
-                    nums[p1] = temp;
+                    temp = nums[p1];
+                    nums[p1] = nums[i];
+                    nums[i] = temp;
                 }
-                ++p0;
-                ++p1;
+                p0++;
+                p1++;
             }
         }
     }
