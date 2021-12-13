@@ -1,4 +1,4 @@
-package normal.question_0119.PascalTriangleII;
+package normal.easy.question_0119.PascalTriangleII;
 
 import org.junit.Test;
 
