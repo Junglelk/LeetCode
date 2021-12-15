@@ -65,28 +65,35 @@ public class Solution {
         for (int[] node : richer) {
             // 原实现在这里会替换掉很多值，所以导致出错
             nodes.get(node[0]).add(node[1]);
+            // 入度数
             nums[node[1]]++;
         }
 
         int[] ans = new int[n];
         for (int i = 0; i < ans.length; i++) {
+            // 其自身的钱数大于等于自己
             ans[i] = i;
         }
         Deque<Integer> deque = new ArrayDeque<>();
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
+                // 第一个只有出度没有入度的节点
                 deque.offer(i);
             }
         }
 
         while (!deque.isEmpty()) {
             int x = deque.poll();
+            // nodes内保存的是比第 x 个值没钱的人
             for (Integer y : nodes.get(x)) {
+                // y 的钱比 x 少，所以当 x 比 y 安静时，更新 y 的ans数组
+                // 这一步也就是所谓的 “输出节点”
                 if (quiet[ans[x]] < quiet[ans[y]]) {
                     ans[y] = ans[x];
                 }
-                if (--nums[y] <= 0) {
+                // 这个是选取下一个无前驱节点
+                if (--nums[y] == 0) {
                     deque.offer(y);
                 }
             }
