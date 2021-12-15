@@ -81,12 +81,14 @@ public class Solution {
 
         while (!deque.isEmpty()) {
             int x = deque.poll();
-            for (Integer y : nodes.get(x)) {
-                if (quiet[ans[x]] < quiet[ans[y]]) {
-                    ans[y] = ans[x];
-                }
-                if (--nums[y] <= 0) {
-                    deque.offer(y);
+            if (null != nodes.get(x)) {
+                for (Integer y : nodes.get(x)) {
+                    if (quiet[ans[x]] < quiet[ans[y]]) {
+                        ans[y] = ans[x];
+                    }
+                    if (--nums[y] <= 0) {
+                        deque.offer(y);
+                    }
                 }
             }
         }
