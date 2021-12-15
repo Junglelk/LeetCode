@@ -59,11 +59,12 @@ public class Solution {
         int n = quiet.length;
         List<List<Integer>> nodes = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            nodes.add(null);
+            nodes.add(new ArrayList<>());
         }
         int[] nums = new int[n];
         for (int[] node : richer) {
-            nodes.set(node[0], new ArrayList<>() {{add(node[1]);}});
+            // 原实现在这里会替换掉很多值，所以导致出错
+            nodes.get(node[0]).add(node[1]);
             nums[node[1]]++;
         }
 
@@ -71,7 +72,7 @@ public class Solution {
         for (int i = 0; i < ans.length; i++) {
             ans[i] = i;
         }
-        Deque<Integer> deque = new LinkedList<>();
+        Deque<Integer> deque = new ArrayDeque<>();
 
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) {
@@ -81,14 +82,12 @@ public class Solution {
 
         while (!deque.isEmpty()) {
             int x = deque.poll();
-            if (null != nodes.get(x)) {
-                for (Integer y : nodes.get(x)) {
-                    if (quiet[ans[x]] < quiet[ans[y]]) {
-                        ans[y] = ans[x];
-                    }
-                    if (--nums[y] <= 0) {
-                        deque.offer(y);
-                    }
+            for (Integer y : nodes.get(x)) {
+                if (quiet[ans[x]] < quiet[ans[y]]) {
+                    ans[y] = ans[x];
+                }
+                if (--nums[y] <= 0) {
+                    deque.offer(y);
                 }
             }
         }
