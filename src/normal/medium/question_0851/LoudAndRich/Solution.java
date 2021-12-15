@@ -1,9 +1,8 @@
 package normal.medium.question_0851.LoudAndRich;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import org.junit.Test;
+
+import java.util.*;
 
 /**
  * There is a group of n people labeled from 0 to n - 1 where each person has a different amount of money and a different level of quietness.
@@ -38,6 +37,13 @@ import java.util.Queue;
  * @since 2021/12/15 21:08
  */
 public class Solution {
+
+    @Test
+    public void test() {
+        System.out.println(Arrays.toString(loudAndRich(new int[][]{{1, 0}, {2, 1}, {3, 1}, {3, 7}, {4, 3}, {5, 3}, {6, 3}}, new int[]{3, 2, 5, 4, 6, 1, 7, 0})));
+    }
+
+
     /**
      * 拓扑排序：<br>
      * 在有向图中选一个无前驱的节点并输出它；<br>
@@ -51,41 +57,36 @@ public class Solution {
      */
     public int[] loudAndRich(int[][] richer, int[] quiet) {
         int n = quiet.length;
-        List<Integer>[] g = new List[n];
-        for (int i = 0; i < n; ++i) {
-            g[i] = new ArrayList<>();
+        List<List<Integer>> nodes = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            nodes.add(null);
         }
-        int[] inDeg = new int[n];
-        for (int[] r : richer) {
-            // 谁比 r[0] 有钱
-            g[r[0]].add(r[1]);
-            // r[1] 是比 r[0] 有钱的人；则inDeg表示 该有钱人比多少人有钱
-            ++inDeg[r[1]];
+        int[] nums = new int[n];
+        for (int[] node : richer) {
+            nodes.set(node[0], new ArrayList<>() {{add(node[1]);}});
+            nums[node[1]]++;
         }
 
         int[] ans = new int[n];
-
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < ans.length; i++) {
             ans[i] = i;
         }
-        Queue<Integer> q = new ArrayDeque<>();
-        for (int i = 0; i < n; ++i) {
-            if (inDeg[i] == 0) {
-                // 添加那个最穷的人（有出度无入度）
-                q.offer(i);
+        Deque<Integer> deque = new LinkedList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                deque.offer(i);
             }
         }
-        while (!q.isEmpty()) {
-            int x = q.poll();
-            // 遍历比当前最穷的人有钱的人
-            for (int y : g[x]) {
+
+        while (!deque.isEmpty()) {
+            int x = deque.poll();
+            for (Integer y : nodes.get(x)) {
                 if (quiet[ans[x]] < quiet[ans[y]]) {
-                    // 更新 x 的邻居的答案
                     ans[y] = ans[x];
                 }
-                // 遍历到的人减一
-                if (--inDeg[y] == 0) {
-                    q.offer(y);
+                if (--nums[y] <= 0) {
+                    deque.offer(y);
                 }
             }
         }
