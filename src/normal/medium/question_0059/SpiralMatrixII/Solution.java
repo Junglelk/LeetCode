@@ -1,4 +1,8 @@
-package normal.question_0059.SpiralMatrixII;
+package normal.medium.question_0059.SpiralMatrixII;
+
+import org.junit.Test;
+
+import java.util.Arrays;
 
 /**
  * Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
@@ -12,18 +16,31 @@ package normal.question_0059.SpiralMatrixII;
  * @since 2021/10/31 9:41
  */
 public class Solution {
+
+    @Test
+    public void test() {
+        int[][] ints = generateMatrix(5);
+        for (int[] anInt : ints) {
+            System.out.println(Arrays.toString(anInt));
+        }
+    }
+
+
     public int[][] generateMatrix(int n) {
         int maxNum = n * n;
         int curNum = 1;
         int[][] matrix = new int[n][n];
         int row = 0, column = 0;
-        // 右下至左上
+        // 右下至左上,
+        // (x,y) 将directions的内部加一遍的结果是：
+        // x , y + 1 -> 向右 -> x + 1 ,y -> 向下 -> x , y-1 -> 向左 -> x-1 , y -> 向上
         int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
         int directionIndex = 0;
         while (curNum <= maxNum) {
             matrix[row][column] = curNum;
             curNum++;
-            int nextRow = row + directions[directionIndex][0], nextColumn = column + directions[directionIndex][1];
+            int nextRow = row + directions[directionIndex][0];
+            int nextColumn = column + directions[directionIndex][1];
             if (nextRow < 0 || nextRow >= n || nextColumn < 0 || nextColumn >= n || matrix[nextRow][nextColumn] != 0) {
                 // 顺时针旋转
                 directionIndex = (directionIndex + 1) % 4;
