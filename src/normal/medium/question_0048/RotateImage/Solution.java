@@ -1,4 +1,4 @@
-package normal.question_0048.RotateImage;
+package normal.medium.question_0048.RotateImage;
 
 /**
  * You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
@@ -18,15 +18,15 @@ package normal.question_0048.RotateImage;
  */
 public class Solution {
     public void rotate(int[][] matrix) {
-        int rowHigh = 0;
-        int rowLow = matrix.length - 1;
-        // 先水平翻转
-        while (rowHigh < rowLow) {
-            int[] temp = matrix[rowHigh];
-            matrix[rowHigh] = matrix[rowLow];
-            matrix[rowLow] = temp;
-            rowHigh++;
-            rowLow--;
+        int start = 0;
+        int end = matrix.length - 1;
+        // 先上下翻转
+        while (start < end) {
+            int[] temp = matrix[start];
+            matrix[start] = matrix[end];
+            matrix[end] = temp;
+            start++;
+            end--;
         }
         // 再对角线翻转
         for (int i = 0; i < matrix.length; i++) {
