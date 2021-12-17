@@ -27,26 +27,28 @@ public class Solution {
 
 
     public int[][] generateMatrix(int n) {
-        int maxNum = n * n;
-        int curNum = 1;
+        int target = n * n;
         int[][] matrix = new int[n][n];
-        int row = 0, column = 0;
-        // 右下至左上,
-        // (x,y) 将directions的内部加一遍的结果是：
-        // x , y + 1 -> 向右 -> x + 1 ,y -> 向下 -> x , y-1 -> 向左 -> x-1 , y -> 向上
-        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        int directionIndex = 0;
-        while (curNum <= maxNum) {
-            matrix[row][column] = curNum;
-            curNum++;
-            int nextRow = row + directions[directionIndex][0];
-            int nextColumn = column + directions[directionIndex][1];
-            if (nextRow < 0 || nextRow >= n || nextColumn < 0 || nextColumn >= n || matrix[nextRow][nextColumn] != 0) {
-                // 顺时针旋转
-                directionIndex = (directionIndex + 1) % 4;
+
+        int[][] directions = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        int row = 0;
+        int col = 0;
+        int point = 1;
+        int index = 0;
+        while (point <= target) {
+            matrix[row][col] = point++;
+
+            //---------------------
+            // 这里做校验并更新下次前进方向
+            int nextRow = row + directions[index][0];
+            int nextCol = col + directions[index][1];
+            if (nextCol >= n || nextCol < 0 || nextRow >= n || nextRow < 0 || matrix[nextRow][nextCol] != 0) {
+                index = (index + 1) % 4;
             }
-            row = row + directions[directionIndex][0];
-            column = column + directions[directionIndex][1];
+            //---------------------
+
+            row = row + directions[index][0];
+            col = col + directions[index][1];
         }
         return matrix;
     }
