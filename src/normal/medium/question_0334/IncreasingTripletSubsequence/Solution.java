@@ -35,6 +35,7 @@ public class Solution {
             } else if (num <= mid) {
                 mid = num;
             } else {
+                // 能走到这一步说明三元子序列是存在的
                 return true;
             }
         }
