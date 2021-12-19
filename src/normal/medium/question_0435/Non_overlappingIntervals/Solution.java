@@ -1,4 +1,4 @@
-package normal.question_0435.Non_overlappingIntervals;
+package normal.medium.question_0435.Non_overlappingIntervals;
 
 import org.junit.Test;
 
@@ -28,7 +28,7 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(eraseOverlapIntervals(new int[][]{{-52,31},{-73,-26},{82,97},{-65,-11},{-62,-49},{95,99},{58,95},{-31,49},{66,98},{-63,2},{30,47},{-40,-26}}));
+        System.out.println(eraseOverlapIntervals(new int[][]{{-52, 31}, {-73, -26}, {82, 97}, {-65, -11}, {-62, -49}, {95, 99}, {58, 95}, {-31, 49}, {66, 98}, {-63, 2}, {30, 47}, {-40, -26}}));
     }
 
 
@@ -38,20 +38,23 @@ public class Solution {
         // 保存没有交集的区间
         Deque<int[]> stack = new LinkedList<>();
         stack.push(intervals[0]);
-        for (int i = 1, intervalsLength = intervals.length; i < intervalsLength; i++) {
-            int R = intervals[i][1];
+        for (int i = 1; i < intervals.length; i++) {
             int L = intervals[i][0];
-            int[] a = stack.peek();
-            if (a[0] == L) {
-                a[1] = Math.min(a[1], R);
+            int R = intervals[i][1];
+            int[] temp = stack.peek();
+
+            if (temp[0] == L) {
+                temp[1] = Math.min(temp[1], R);
             }
-            // 这一步就是移去没有交集空间中，相比较当前比较长的那一个，替换为更合适的，短的区间
-            if (R < a[1]) {
+
+            // 收缩原有区间
+            if (R < temp[1]) {
                 stack.pop();
                 stack.push(intervals[i]);
                 continue;
             }
-            if (a[1] <= L) {
+            // 非重叠区间，直接填入
+            if (temp[1] <= L) {
                 stack.push(intervals[i]);
             }
         }
