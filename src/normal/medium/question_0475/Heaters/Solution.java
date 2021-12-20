@@ -32,20 +32,16 @@ import java.util.Arrays;
  */
 public class Solution {
     public int findRadius(int[] houses, int[] heaters) {
-        // 保证均是从左到右遍历
         Arrays.sort(houses);
         Arrays.sort(heaters);
         int ans = 0;
         for (int i = 0, j = 0; i < houses.length; i++) {
-            // 计算加热半径
-            int curDistance = Math.abs(houses[i] - heaters[j]);
-            // 或前，或后；当前位置处的加热半径，小于下一个加热器的半径时
+            int raids = Math.abs(houses[i] - heaters[j]);
             while (j < heaters.length - 1 && Math.abs(houses[i] - heaters[j]) >= Math.abs(houses[i] - heaters[j + 1])) {
                 j++;
-                // 更新加热半径
-                curDistance = Math.min(curDistance, Math.abs(houses[i] - heaters[j]));
+                raids = Math.abs(houses[i] - heaters[j]);
             }
-            ans = Math.max(ans, curDistance);
+            ans = Math.max(raids, ans);
         }
         return ans;
     }
