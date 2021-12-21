@@ -1,6 +1,8 @@
 package normal.easy.question_1154.DayOfTheYear;
 
-import java.util.Arrays;
+import org.junit.Test;
+
+import java.text.ParseException;
 
 /**
  * Given a string date representing a Gregorian calendar date formatted as YYYY-MM-DD, return the day number of the year.
@@ -17,17 +19,47 @@ import java.util.Arrays;
  * @since 2021/12/21 20:51
  */
 public class Solution {
-    public int dayOfYear(String date){
-        int[] split = Arrays.stream(date.split("-")).mapToInt(Integer::parseInt).toArray();
+
+    @Test
+    public void test() throws ParseException {
+        System.out.println(dayOfYear("2019-01-09"));
+    }
+
+
+    public int dayOfYear(String date) {
+        int year = 0;
+        int month = 0;
+        int day = 0;
+
+        for (int i = 0; i < date.length(); i++) {
+            int temp = date.charAt(i) - '0';
+            if (i == 0) {
+                year += temp * 1000;
+            } else if (i == 1) {
+                year += temp * 100;
+            } else if (i == 2) {
+                year += temp * 10;
+            } else if (i == 3) {
+                year += temp;
+            } else if (i == 5) {
+                month += temp * 10;
+            } else if (i == 6) {
+                month += temp;
+            } else if (i == 8) {
+                day += temp * 10;
+            } else if (i == 9) {
+                day += temp;
+            }
+        }
+
         int ans = 0;
         int[] days = new int[]{31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
-        int point = split[1] - 2;
-        if (point >= 0) {
-            ans += days[point];
+        if (month >= 2) {
+            ans += days[month - 2];
         }
-        ans += split[2];
-        if ((split[0] % 100 == 0 && split[0] % 400 == 0) || (split[0] % 100 != 0 && split[0] % 4 == 0)) {
-            if (split[1] > 2) {
+        ans += day;
+        if ((year % 100 == 0 && year % 400 == 0) || (year % 100 != 0 && year % 4 == 0)) {
+            if (month > 2) {
                 ans++;
             }
         }
