@@ -1,6 +1,6 @@
 package normal.question_0256.PaintHouse;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * There is a row of n houses, where each house can be painted one of three colors:

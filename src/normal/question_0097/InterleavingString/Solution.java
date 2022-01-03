@@ -1,6 +1,6 @@
 package normal.question_0097.InterleavingString;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.

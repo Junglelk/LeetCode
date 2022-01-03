@@ -1,6 +1,6 @@
 package normal.question_0069.Sqrtx;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Jungle

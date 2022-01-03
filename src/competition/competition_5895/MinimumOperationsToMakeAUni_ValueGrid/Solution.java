@@ -1,6 +1,6 @@
 package competition.competition_5895.MinimumOperationsToMakeAUni_ValueGrid;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

@@ -1,6 +1,6 @@
 package normal.question_0003.LongestSubstringWithoutRepeatingCharacters;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;

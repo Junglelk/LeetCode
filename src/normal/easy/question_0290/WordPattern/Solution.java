@@ -1,6 +1,6 @@
 package normal.easy.question_0290.WordPattern;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;

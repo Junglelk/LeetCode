@@ -1,6 +1,6 @@
 package normal.question_1064.FixedPoint;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 1064: 不动点

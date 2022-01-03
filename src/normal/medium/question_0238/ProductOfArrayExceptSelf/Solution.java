@@ -1,6 +1,6 @@
 package normal.medium.question_0238.ProductOfArrayExceptSelf;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

@@ -1,6 +1,6 @@
 package competition.competition_5843.NumberOfStringsThatAppearAsSubstringsInWord;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Jungle

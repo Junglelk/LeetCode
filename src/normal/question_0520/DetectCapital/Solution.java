@@ -1,6 +1,6 @@
 package normal.question_0520.DetectCapital;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * We define the usage of capitals in a word to be right when one of the following cases holds:

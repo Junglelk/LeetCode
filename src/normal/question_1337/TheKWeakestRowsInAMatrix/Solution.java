@@ -1,6 +1,6 @@
 package normal.question_1337.TheKWeakestRowsInAMatrix;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package normal.question_1711.CountGoodMeals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;

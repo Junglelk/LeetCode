@@ -1,6 +1,6 @@
 package normal.medium.question_0851.LoudAndRich;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 

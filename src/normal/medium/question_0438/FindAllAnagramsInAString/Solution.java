@@ -1,6 +1,6 @@
 package normal.medium.question_0438.FindAllAnagramsInAString;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

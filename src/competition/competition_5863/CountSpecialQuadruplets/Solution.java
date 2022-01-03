@@ -1,6 +1,6 @@
 package competition.competition_5863.CountSpecialQuadruplets;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * <pre>

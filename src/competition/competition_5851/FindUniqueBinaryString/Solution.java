@@ -1,6 +1,6 @@
 package competition.competition_5851.FindUniqueBinaryString;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;

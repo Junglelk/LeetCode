@@ -1,6 +1,6 @@
 package normal.question_0091.DecodeWays;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * A message containing letters from A-Z can be encoded into numbers using the following mapping:

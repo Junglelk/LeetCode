@@ -1,6 +1,6 @@
 package normal.question_0198.HouseRobber;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

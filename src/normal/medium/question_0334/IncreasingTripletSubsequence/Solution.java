@@ -1,6 +1,6 @@
 package normal.medium.question_0334.IncreasingTripletSubsequence;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.

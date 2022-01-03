@@ -1,6 +1,6 @@
 package normal.question_0740.DeleteAndEarn;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:

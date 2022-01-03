@@ -1,6 +1,6 @@
 package normal.question_0265.PaintHouseII;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

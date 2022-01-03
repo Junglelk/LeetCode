@@ -1,6 +1,6 @@
 package normal.question_0456.Q132Pattern;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Deque;
 import java.util.LinkedList;

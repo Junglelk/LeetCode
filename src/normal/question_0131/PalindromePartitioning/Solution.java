@@ -1,6 +1,6 @@
 package normal.question_0131.PalindromePartitioning;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;

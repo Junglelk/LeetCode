@@ -1,6 +1,6 @@
 package normal.question_0171.ExcelSheetColumnNumber;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given a string columnTitle that represents the column title as appear in an Excel sheet, return its corresponding column number.

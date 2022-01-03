@@ -1,6 +1,6 @@
 package normal.question_0712.MinimumASCIIDeleteSumForTwoStrings;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 给定两个字符串s1, s2，找到使两个字符串相等所需删除字符的ASCII值的最小和。

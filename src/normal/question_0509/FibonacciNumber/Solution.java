@@ -1,6 +1,6 @@
 package normal.question_0509.FibonacciNumber;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 这两天比较忙，做占位，完成每日提交

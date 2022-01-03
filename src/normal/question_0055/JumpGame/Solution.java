@@ -1,6 +1,6 @@
 package normal.question_0055.JumpGame;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * You are given an integer array nums.

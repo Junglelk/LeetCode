@@ -1,6 +1,6 @@
 package normal.question_1746.MaximumSubarraySumAfterOneOperation;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

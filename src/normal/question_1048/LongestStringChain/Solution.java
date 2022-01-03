@@ -1,6 +1,6 @@
 package normal.question_1048.LongestStringChain;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;

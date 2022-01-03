@@ -1,6 +1,6 @@
 package normal.medium.question_0050.PowXN;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

@@ -1,6 +1,6 @@
 package normal.question_1646.GetMaximumInGeneratedArray;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

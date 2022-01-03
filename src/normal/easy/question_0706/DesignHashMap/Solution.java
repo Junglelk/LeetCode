@@ -1,6 +1,6 @@
 package normal.easy.question_0706.DesignHashMap;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 import java.util.LinkedList;

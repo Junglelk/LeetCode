@@ -1,6 +1,6 @@
 package normal.question_0206.ReverseLinkedList;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import other.ListNode;
 
 /**

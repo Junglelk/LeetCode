@@ -1,6 +1,6 @@
 package normal.question_0594.LongestHarmoniousSubsequence;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

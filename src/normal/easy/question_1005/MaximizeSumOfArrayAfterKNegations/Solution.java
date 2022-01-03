@@ -1,6 +1,6 @@
 package normal.easy.question_1005.MaximizeSumOfArrayAfterKNegations;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

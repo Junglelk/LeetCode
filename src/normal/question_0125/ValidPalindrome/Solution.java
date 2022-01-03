@@ -1,6 +1,6 @@
 package normal.question_0125.ValidPalindrome;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 

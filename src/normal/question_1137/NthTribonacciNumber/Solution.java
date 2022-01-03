@@ -1,6 +1,6 @@
 package normal.question_1137.NthTribonacciNumber;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The Tribonacci sequence Tn is defined as follows: 

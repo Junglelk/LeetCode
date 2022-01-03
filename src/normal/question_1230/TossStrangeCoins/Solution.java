@@ -1,6 +1,6 @@
 package normal.question_1230.TossStrangeCoins;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

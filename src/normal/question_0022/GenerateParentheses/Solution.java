@@ -1,6 +1,6 @@
 package normal.question_0022.GenerateParentheses;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package normal.easy.question_0748.ShortestCompletingWord;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;

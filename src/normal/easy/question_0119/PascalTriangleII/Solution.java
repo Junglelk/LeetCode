@@ -1,6 +1,6 @@
 package normal.easy.question_0119.PascalTriangleII;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

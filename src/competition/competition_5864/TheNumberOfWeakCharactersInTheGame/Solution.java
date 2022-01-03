@@ -1,6 +1,6 @@
 package competition.competition_5864.TheNumberOfWeakCharactersInTheGame;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 你正在参加一个多角色游戏，每个角色都有两个主要属性：攻击 和 防御 。给你一个二维整数数组 properties ，

@@ -1,6 +1,6 @@
 package normal.easy.question_1518.WaterBottles;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given numBottles full water bottles, you can exchange numExchange empty water bottles for one full water bottle.

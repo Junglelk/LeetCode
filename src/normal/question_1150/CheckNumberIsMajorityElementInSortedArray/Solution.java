@@ -1,7 +1,7 @@
 package normal.question_1150.CheckNumberIsMajorityElementInSortedArray;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 检查一个数是否在数组中占绝大多数

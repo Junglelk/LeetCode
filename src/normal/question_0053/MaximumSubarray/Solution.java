@@ -1,6 +1,6 @@
 package normal.question_0053.MaximumSubarray;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

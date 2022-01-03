@@ -1,6 +1,6 @@
 package normal.easy.question_0415.AddStrings;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.

@@ -1,6 +1,6 @@
 package normal.question_0487.MaxConsecutiveOnesII;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

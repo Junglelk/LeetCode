@@ -1,6 +1,6 @@
 package normal.medium.question_0075.SortColors;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

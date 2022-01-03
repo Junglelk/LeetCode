@@ -1,6 +1,6 @@
 package normal.medium.question_0560.SubarraySumEqualsK;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.

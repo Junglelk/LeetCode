@@ -1,6 +1,6 @@
 package competition.medium.competition_5944.Step_By_StepDirectionsFromABinaryTreeNodeToAnother;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import other.TreeNode;
 
 /**

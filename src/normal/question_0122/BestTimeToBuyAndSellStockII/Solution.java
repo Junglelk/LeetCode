@@ -1,6 +1,6 @@
 package normal.question_0122.BestTimeToBuyAndSellStockII;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * You are given an array prices where prices[i] is the price of a given stock on the ith day.

@@ -1,6 +1,6 @@
 package normal.question_0067.AddBinary;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 

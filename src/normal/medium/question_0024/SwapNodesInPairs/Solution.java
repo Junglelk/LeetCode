@@ -1,6 +1,6 @@
 package normal.medium.question_0024.SwapNodesInPairs;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import other.ListNode;
 
 /**

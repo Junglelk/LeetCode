@@ -1,6 +1,6 @@
 package normal.question_0309.BestTimeToBuyAndSellStockWithCooldown;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

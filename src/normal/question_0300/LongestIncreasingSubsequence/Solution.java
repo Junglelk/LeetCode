@@ -1,6 +1,6 @@
 package normal.question_0300.LongestIncreasingSubsequence;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Given an integer array nums, return the length of the longest strictly increasing subsequence.

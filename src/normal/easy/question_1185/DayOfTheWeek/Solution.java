@@ -1,6 +1,6 @@
 package normal.easy.question_1185.DayOfTheWeek;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.util.Calendar;

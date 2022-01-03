@@ -1,6 +1,6 @@
 package normal.question_0476.NumberComplement;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The complement of an integer is the integer you get when you flip all the 0's to 1's and all the 1's to 0's in its binary representation.

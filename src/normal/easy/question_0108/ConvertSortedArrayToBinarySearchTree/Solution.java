@@ -1,6 +1,6 @@
 package normal.easy.question_0108.ConvertSortedArrayToBinarySearchTree;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import other.TreeNode;
 
 /**

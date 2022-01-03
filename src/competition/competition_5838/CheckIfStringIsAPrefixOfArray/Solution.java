@@ -1,6 +1,6 @@
 package competition.competition_5838.CheckIfStringIsAPrefixOfArray;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 前缀数组

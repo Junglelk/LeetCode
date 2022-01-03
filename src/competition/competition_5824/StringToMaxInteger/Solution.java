@@ -1,6 +1,6 @@
 package competition.competition_5824.StringToMaxInteger;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 给你一个字符串 num ，该字符串表示一个大整数。另给你一个长度为 10 且 下标从 0  开始 的整数数组 change ，该数组将 0-9 中的每个数字映射到另一个数字。更规范的说法是，数字 d 映射为数字 change[d] 。

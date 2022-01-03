@@ -1,6 +1,6 @@
 package normal.question_1035.UncrossedLines;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * We write the integers of nums1 and nums2 (in the order they are given) on two separate horizontal lines.
