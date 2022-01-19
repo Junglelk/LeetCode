@@ -1,5 +1,8 @@
 package normal.easy.question_0219.ContainsDuplicateII;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
  * <p>
@@ -14,14 +17,16 @@ package normal.easy.question_0219.ContainsDuplicateII;
  */
 public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        for (int i = 0; i < nums.length-1; i++) {
-            for (int j = i+1; j < nums.length; j++) {
-                if (nums[i] == nums[j]) {
-                    if (Math.abs(i - j) <= k) {
-                        return true;
-                    }
-                }
+        int n = nums.length;
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            if (i > k) {
+                set.remove(nums[i - k - 1]);
             }
+            if (set.contains(nums[i])) {
+                return true;
+            }
+            set.add(nums[i]);
         }
         return false;
     }
