@@ -2,8 +2,7 @@ package interview.ch01.question_05.OneAway;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 /**
  * There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
@@ -21,29 +20,33 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(oneEditAway("pale","pala"));
+        System.out.println(oneEditAway("pale", "palee"));
     }
-
 
 
     public boolean oneEditAway(String first, String second) {
         if (Math.abs(first.length() - second.length()) > 1) {
             return false;
         }
-        Map<Character, Integer> firstMap = new HashMap<>();
-        Map<Character, Integer> secondMap = new HashMap<>();
-        char[] chars = first.toCharArray();
-        char[] chars1 = second.toCharArray();
-        for (char aChar : chars) {
-            firstMap.put(aChar, firstMap.getOrDefault(aChar, 0) + 1);
-        }
-        for (char c : chars1) {
-            secondMap.put(c, secondMap.getOrDefault(c, 0) + 1);
-        }
         int count = 0;
-        for (Character character : firstMap.keySet()) {
-            if (!firstMap.get(character).equals(secondMap.get(character))) {
-                count++;
+        char[] f = first.toCharArray();
+        char[] s = second.toCharArray();
+        Arrays.sort(f);
+        Arrays.sort(s);
+        if (f.length == s.length) {
+            for (int i = 0; i < f.length; i++) {
+                if (f[i] != s[i]) {
+                    count++;
+                }
+            }
+        } else {
+            for (int i = 0; i < f.length || i <  s.length; i++) {
+                if (i<f.length && i< s.length && f[i] != s[i]) {
+                    count++;
+                }
+                if (i >= f.length || i >= s.length) {
+                    count++;
+                }
             }
         }
         return count <= 1;
