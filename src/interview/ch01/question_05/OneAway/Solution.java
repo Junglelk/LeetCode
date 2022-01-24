@@ -25,20 +25,33 @@ public class Solution {
 
 
     public boolean oneEditAway(String first, String second) {
-        if (Math.abs(first.length() - second.length()) > 1) {
+        int lf = first.length(), ls = second.length();
+        if (lf > ls) {
+            return oneEditAway(second, first);
+        }
+        if (ls - lf > 1) {
             return false;
         }
-        int count = 0;
-        int[] array = new int[26];
-        for (int i = 0; i < first.length(); i++) {
-            array[first.charAt(i) - 'a']++;
+        if (lf == ls) {
+            int count = 0;
+            for (int i = 0; i < lf; i++) {
+                if (first.charAt(i) != second.charAt(i)) {
+                    count += 1;
+                }
+            }
+            return count <= 1;
         }
-        for (int i = 0; i < second.length(); i++) {
-            array[second.charAt(i) - 'a']--;
+        int i = 0;
+        int ofs = 0;
+        while (i < lf) {
+            if (first.charAt(i) != second.charAt(i + ofs)) {
+                if (++ofs > 1) {
+                    return false;
+                }
+            } else {
+                i += 1;
+            }
         }
-        for (int i : array) {
-            count += i;
-        }
-        return count <= 1;
+        return true;
     }
 }
