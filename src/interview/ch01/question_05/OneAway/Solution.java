@@ -2,8 +2,6 @@ package interview.ch01.question_05.OneAway;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 /**
  * There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
  * <p>
@@ -20,7 +18,9 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(oneEditAway("pale", "palee"));
+        // "intention"
+        //"execution"
+        System.out.println(oneEditAway("intention", "execution"));
     }
 
 
@@ -29,25 +29,15 @@ public class Solution {
             return false;
         }
         int count = 0;
-        char[] f = first.toCharArray();
-        char[] s = second.toCharArray();
-        Arrays.sort(f);
-        Arrays.sort(s);
-        if (f.length == s.length) {
-            for (int i = 0; i < f.length; i++) {
-                if (f[i] != s[i]) {
-                    count++;
-                }
-            }
-        } else {
-            for (int i = 0; i < f.length || i <  s.length; i++) {
-                if (i<f.length && i< s.length && f[i] != s[i]) {
-                    count++;
-                }
-                if (i >= f.length || i >= s.length) {
-                    count++;
-                }
-            }
+        int[] array = new int[26];
+        for (int i = 0; i < first.length(); i++) {
+            array[first.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < second.length(); i++) {
+            array[second.charAt(i) - 'a']--;
+        }
+        for (int i : array) {
+            count += i;
         }
         return count <= 1;
     }
