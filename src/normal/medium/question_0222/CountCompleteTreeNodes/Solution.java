@@ -26,6 +26,11 @@ import java.util.Deque;
  * @since 2022/1/29 10:04
  */
 public class Solution {
+    /**
+     * TODO 后续可能去了解一下官解
+     * @param root 根节点
+     * @return 节点数目
+     */
     public int countNodes(TreeNode root) {
         if (root == null) {
             return 0;
