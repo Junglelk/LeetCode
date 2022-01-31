@@ -1,10 +1,37 @@
 package normal.medium.question_0116.PopulatingNextRightPointersInEachNode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * @author Jungle
  * @since 2022/01/30 11:21
  */
 public class Solution {
+    public Node connect(Node root) {
+        if (root == null) {
+            return root;
+        }
+        Deque<Node> queue = new ArrayDeque<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node poll = queue.poll();
+                if (poll != null) {
+                    poll.next = queue.peek();
+                    if (poll.left != null) {
+                        queue.offer(poll.left);
+                    }
+                    if (poll.right != null) {
+                        queue.offer(poll.right);
+                    }
+                }
+
+            }
+        }
+        return root;
+    }
 }
 
 class Node {
@@ -26,4 +53,4 @@ class Node {
         right = _right;
         next = _next;
     }
-};
+}
