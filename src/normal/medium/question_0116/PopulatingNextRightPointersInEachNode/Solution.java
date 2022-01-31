@@ -18,16 +18,15 @@ public class Solution {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 Node poll = queue.poll();
-                if (poll != null) {
+                if (i < size - 1) {
                     poll.next = queue.peek();
-                    if (poll.left != null) {
-                        queue.offer(poll.left);
-                    }
-                    if (poll.right != null) {
-                        queue.offer(poll.right);
-                    }
                 }
-
+                if (poll.left != null) {
+                    queue.offer(poll.left);
+                }
+                if (poll.right != null) {
+                    queue.offer(poll.right);
+                }
             }
         }
         return root;
