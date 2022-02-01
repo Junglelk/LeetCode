@@ -28,6 +28,15 @@ import java.util.List;
  * @since 2022/02/01 19:20
  */
 public class Solution {
+    /**
+     * 原描述就是一个粒度很大的排序，所以我直接取出来数据，然后进行小粒度的排序，再还原成链表。
+     * <p>
+     * 时间、空间复杂度都会很高，所以不是很好的一种实现，权当联系链表操作了。
+     *
+     * @param head 头节点
+     * @param x    THRESHOLD
+     * @return 结果链表
+     */
     public ListNode partition(ListNode head, int x) {
         if (head == null || head.next == null) {
             return head;
