@@ -38,23 +38,23 @@ public class Solution {
      * @return 结果链表
      */
     public ListNode partition(ListNode head, int x) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        List<Integer> list = new ArrayList<>();
-        list.add(head.val);
-        while (head.next != null) {
+        ListNode small = new ListNode(-1);
+        ListNode sHead = small;
+        ListNode large = new ListNode(-1);
+        ListNode lHead = large;
+        while (head != null) {
+            ListNode temp = head;
             head = head.next;
-            list.add(head.val);
+            if (temp.val >= x) {
+                large.next = temp;
+                large = large.next;
+            } else {
+                small.next = temp;
+                small = small.next;
+            }
         }
-        Integer[] array = list.toArray(new Integer[]{});
-        Arrays.sort(array);
-        ListNode node = new ListNode();
-        head = node;
-        for (int i = 0; i < array.length; i++) {
-            node.next = new ListNode(array[i]);
-            node = node.next;
-        }
-        return head.next;
+        large.next = null;
+        small.next = lHead.next;
+        return sHead.next;
     }
 }
