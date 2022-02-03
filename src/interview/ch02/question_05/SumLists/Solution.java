@@ -1,5 +1,6 @@
 package interview.ch02.question_05.SumLists;
 
+import org.junit.jupiter.api.Test;
 import other.ListNode;
 
 /**
@@ -19,7 +20,36 @@ import other.ListNode;
  * @since 2022/02/02 22:24
  */
 public class Solution {
+    @Test
+    public void test() {
+        System.out.println(addTwoNumbers(new ListNode(5), new ListNode(5)));
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return null;
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        int advance = 0;
+        ListNode result = new ListNode(-1);
+        ListNode head = result;
+        while (l1 != null || l2 != null) {
+            int a = l1 == null ? 0 : l1.val;
+            int b = l2 == null ? 0 : l2.val;
+            int temp = (a + b) % 10;
+            result.next = new ListNode(temp + advance);
+            advance = (a + b) / 10;
+            result = result.next;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+
+        return head.next;
     }
 }
