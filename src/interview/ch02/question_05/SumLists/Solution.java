@@ -35,7 +35,7 @@ public class Solution {
         int advance = 0;
         ListNode result = new ListNode(-1);
         ListNode head = result;
-        while (l1 != null || l2 != null) {
+        while (l1 != null || l2 != null || advance != 0) {
             int a = l1 == null ? 0 : l1.val;
             int b = l2 == null ? 0 : l2.val;
             int temp = (a + b) % 10;
