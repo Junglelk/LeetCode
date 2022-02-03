@@ -38,9 +38,9 @@ public class Solution {
         while (l1 != null || l2 != null || advance != 0) {
             int a = l1 == null ? 0 : l1.val;
             int b = l2 == null ? 0 : l2.val;
-            int temp = (a + b) % 10;
-            result.next = new ListNode(temp + advance);
-            advance = (a + b) / 10;
+            int temp = (a + b + advance) % 10;
+            result.next = new ListNode(temp);
+            advance = (a + b + advance) / 10;
             result = result.next;
             if (l1 != null) {
                 l1 = l1.next;
