@@ -1,10 +1,6 @@
-package interview.ch02.PartitionList;
+package interview.ch02.question_04.PartitionList;
 
 import other.ListNode;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Write code to partition a linked list around a value x,
