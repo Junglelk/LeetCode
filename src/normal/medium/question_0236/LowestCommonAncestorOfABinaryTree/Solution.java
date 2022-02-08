@@ -28,18 +28,17 @@ public class Solution {
      * @return 公共祖先
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // 遍历到的子树节点是否存在目标节点。不存在返回null
+        // 终结条件
         if (root == null || root.val == p.val || root.val == q.val) {
             return root;
         }
-        // 递归遍历操作
+
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        // 左右子树分别遍历到了目标节点，说明当前根节点是公共祖先
+        // 检验节点是否可以返回
         if (left != null && right != null) {
             return root;
         }
-        // 否则继续遍历那个存在目标节点的子树
         if (left != null) {
             return left;
         }
