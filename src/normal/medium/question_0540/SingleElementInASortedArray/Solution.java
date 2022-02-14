@@ -21,11 +21,25 @@ package normal.medium.question_0540.SingleElementInASortedArray;
  * @since 2022/2/14 21:22
  */
 public class Solution {
+    /**
+     * 由题意可知，数组的长度是个奇数，而单个数字 single 前后子数组长度均为偶数。<br>
+     * 且如果nums[x]==nums[x+1]在 single 左侧时 x 必为偶数（含 0 ），在其右侧时，必为奇数。<br>
+     * 又有异或操作的性质，当num为偶数时，num^1 的值为 num+1，num为奇数时，num^1的值为num-1
+     *
+     * @param nums 待查找数组
+     * @return 单一数字
+     */
     public int singleNonDuplicate(int[] nums) {
-        int ret = 0;
-        for (int num : nums) {
-            ret ^= num;
+        int low = 0;
+        int high = nums.length - 1;
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == nums[mid ^ 1]) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
         }
-        return ret;
+        return nums[low];
     }
 }
