@@ -22,30 +22,14 @@ public class Solution {
 
     @Test
     public void test() {
-//        System.out.println(removeNthFromEnd(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))), 2));
+        System.out.println(removeNthFromEnd(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))), 2));
         System.out.println(removeNthFromEnd(new ListNode(1), 1));
 //        System.out.println(reverse(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))));
     }
 
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        head = reverse(head);
-        int k = 0;
-        ListNode temp = head;
-        while (temp != null) {
-            if (k == n - 1) {
-                ListNode point = temp.next;
-                temp.next = temp.next.next;
-                point.next = null;
-            }
-            temp = temp.next;
-            k++;
-        }
-        return head == null ? null : reverse(head);
-    }
-
-    public ListNode reverse(ListNode head) {
-        ListNode hair;
+        ListNode hair = null;
         Deque<ListNode> stack = new ArrayDeque<>();
         while (head != null) {
             hair = head.next;
@@ -53,12 +37,18 @@ public class Solution {
             stack.push(head);
             head = hair;
         }
-        hair = stack.pop();
-        head = hair;
+        int size = stack.size();
+        head = hair = new ListNode(-1);
+        int k = 0;
         while (!stack.isEmpty()) {
-            hair.next = stack.pop();
-            hair = hair.next;
+            if (k == size - n) {
+                stack.pollLast();
+            } else {
+                hair.next = stack.pollLast();
+                hair = hair.next;
+            }
+            k++;
         }
-        return head;
+        return head.next;
     }
 }
