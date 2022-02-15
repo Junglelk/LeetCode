@@ -3,9 +3,6 @@ package normal.medium.question_0019.RemoveNthNodeFromEndOfList;
 import org.junit.jupiter.api.Test;
 import other.ListNode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 /**
  * Given the head of a linked list, remove the nth node from the end of the list and return its head.
  * <p>
@@ -24,31 +21,27 @@ public class Solution {
     public void test() {
         System.out.println(removeNthFromEnd(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))), 2));
         System.out.println(removeNthFromEnd(new ListNode(1), 1));
-//        System.out.println(reverse(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))));
     }
 
-
+    /**
+     * 官解，先后指针，挺好的思路
+     *
+     * @param head 头节点
+     * @param n    倒数第 n 个节点
+     * @return 删除后的链表
+     */
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode hair = null;
-        Deque<ListNode> stack = new ArrayDeque<>();
-        while (head != null) {
-            hair = head.next;
-            head.next = null;
-            stack.push(head);
-            head = hair;
+        ListNode dummy = new ListNode(0, head);
+        ListNode first = head;
+        ListNode second = dummy;
+        for (int i = 0; i < n; ++i) {
+            first = first.next;
         }
-        int size = stack.size();
-        head = hair = new ListNode(-1);
-        int k = 0;
-        while (!stack.isEmpty()) {
-            if (k == size - n) {
-                stack.pollLast();
-            } else {
-                hair.next = stack.pollLast();
-                hair = hair.next;
-            }
-            k++;
+        while (first != null) {
+            first = first.next;
+            second = second.next;
         }
-        return head.next;
+        second.next = second.next.next;
+        return dummy.next;
     }
 }
