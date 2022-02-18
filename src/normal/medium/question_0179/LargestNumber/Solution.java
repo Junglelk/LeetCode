@@ -1,6 +1,6 @@
 package normal.medium.question_0179.LargestNumber;
 
-import java.util.PriorityQueue;
+import java.util.Arrays;
 
 /**
  * Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
@@ -20,18 +20,23 @@ import java.util.PriorityQueue;
  */
 public class Solution {
     public String largestNumber(int[] nums) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>((i, j) -> j - i);
-        for (int num : nums) {
-            int temp = num;
-            while (temp != 0) {
-                queue.add(temp % 10);
-                temp /= 10;
-            }
+        String[] strings = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            strings[i] = String.valueOf(nums[i]);
         }
+        Arrays.sort(strings, (i, j) -> {
+            String ij = i + j, ji = j + i;
+            return ji.compareTo(ij);
+        });
         StringBuilder stb = new StringBuilder();
-        while (!queue.isEmpty()) {
-            stb.append(queue.poll());
+        for (String s : strings) {
+            stb.append(s);
         }
-        return stb.toString();
+        int len = stb.length();
+        int k = 0;
+        while (k < len - 1 && stb.charAt(k) == '0') {
+            k++;
+        }
+        return stb.substring(k);
     }
 }
