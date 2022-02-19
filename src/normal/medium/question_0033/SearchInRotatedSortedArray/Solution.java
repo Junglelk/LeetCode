@@ -1,5 +1,7 @@
 package normal.medium.question_0033.SearchInRotatedSortedArray;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * There is an integer array nums sorted in ascending order (with distinct values).
  * <p>
@@ -23,12 +25,29 @@ package normal.medium.question_0033.SearchInRotatedSortedArray;
  * @since 2022/2/19 15:02
  */
 public class Solution {
+
+    @Test
+    public void test() {
+        System.out.println(search(new int[]{4, 5, 6, 7, 0, 1, 2}, 0));
+    }
+
+
     public int search(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) {
-                return i;
-            }
+        int left = 0;
+        int right = nums.length - 1;
+        return binary(nums, left, right, target);
+    }
+
+    int binary(int[] nums, int left, int right, int target) {
+        int mid = left / 2 + right / 2;
+        if (nums[mid] != target && mid != left && mid != right) {
+            int l = binary(nums, mid + 1, right, target);
+            int r = binary(nums, left, mid - 1, target);
+            return l == -1 ? r : l;
+        } else if (nums[mid] == target) {
+            return mid;
+        } else {
+            return -1;
         }
-        return -1;
     }
 }
