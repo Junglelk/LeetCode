@@ -1,5 +1,9 @@
 package normal.medium.question_0034.FindFirstAndLastPositionOfElementInSortedArray;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 /**
  * Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
  * <p>
@@ -31,23 +35,67 @@ package normal.medium.question_0034.FindFirstAndLastPositionOfElementInSortedArr
  * @since 2022/2/20 22:45
  */
 public class Solution {
+
+
+    @Test
+    public void test() {
+        System.out.println(Arrays.toString(searchRange(new int[]{5, 7, 7, 8, 8, 10}, 11)));
+    }
+
+
     public int[] searchRange(int[] nums, int target) {
-        int left = 0;
-        int right = 0;
-        boolean has = false;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target && !has) {
-                has = true;
-                left = i;
+        int n = nums.length;
+        int l = 0;
+        int r = n - 1;
+        while (l <= n) {
+            int mid = (l + r) >> 1;
+            if (nums[mid] == target) {
+                int left = findLeft(nums, l, mid, target);
+                int right = findRight(nums, r, mid, target);
+                return new int[]{left, right};
+            } else if (nums[mid] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
             }
-            if (nums[i] == target && has) {
-                right = i;
-            }
-        }
-        if (has) {
-            return new int[]{left, right};
         }
 
         return new int[]{-1, -1};
+    }
+
+    private int findRight(int[] nums, int r, int mid, int target) {
+        int left = mid;
+        int right = r;
+        while (left <= right) {
+            int middle = (left + right + 1) >> 1;
+            if (nums[right] == target) {
+                return right;
+            } else if (nums[middle] == target) {
+                return findRight(nums, right, middle, target);
+            } else if (nums[middle] > target) {
+                right = middle - 1;
+            } else {
+                left++;
+            }
+        }
+        return mid;
+    }
+
+    private int findLeft(int[] nums, int l, int mid, int target) {
+        int left = l;
+        int right = mid;
+        while (left <= right) {
+            int middle = (left + right) >> 1;
+            if (nums[left] == target) {
+                return left;
+            } else if (nums[middle] == target) {
+                return findLeft(nums, left, middle, target);
+            } else if (nums[middle] < target) {
+                left = middle + 1;
+            } else {
+                right--;
+            }
+        }
+        return mid;
     }
 }
