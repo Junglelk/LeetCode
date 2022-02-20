@@ -45,57 +45,52 @@ public class Solution {
 
     public int[] searchRange(int[] nums, int target) {
         int n = nums.length;
+        if (n == 0) {
+            return new int[]{-1, -1};
+        }
+        int left = findLeft(nums, target);
+        if (left == -1) {
+            return new int[]{-1, -1};
+        }
+        int right = findRight(nums, target);
+
+        return new int[]{left, right};
+    }
+
+    private int findRight(int[] nums, int target) {
+        int n = nums.length;
         int l = 0;
         int r = n - 1;
-        while (l <= n) {
-            int mid = (l + r) >> 1;
-            if (nums[mid] == target) {
-                int left = findLeft(nums, l, mid, target);
-                int right = findRight(nums, r, mid, target);
-                return new int[]{left, right};
-            } else if (nums[mid] > target) {
-                r = mid - 1;
-            } else {
+        while (l < r) {
+            int mid = (l + r + 1) >> 1;
+            if (nums[mid] < target) {
                 l = mid + 1;
+            } else if (nums[mid] == target) {
+                l = mid;
+            } else {
+                r = mid - 1;
             }
         }
-
-        return new int[]{-1, -1};
+        return r;
     }
 
-    private int findRight(int[] nums, int r, int mid, int target) {
-        int left = mid;
-        int right = r;
-        while (left <= right) {
-            int middle = (left + right + 1) >> 1;
-            if (nums[right] == target) {
-                return right;
-            } else if (nums[middle] == target) {
-                return findRight(nums, right, middle, target);
-            } else if (nums[middle] > target) {
-                right = middle - 1;
+    private int findLeft(int[] nums, int target) {
+        int n = nums.length;
+        int l = 0;
+        int r = n - 1;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (nums[mid] < target) {
+                l = mid + 1;
+            } else if (nums[mid] == target) {
+                r = mid;
             } else {
-                left++;
+                r = mid - 1;
             }
         }
-        return mid;
-    }
-
-    private int findLeft(int[] nums, int l, int mid, int target) {
-        int left = l;
-        int right = mid;
-        while (left <= right) {
-            int middle = (left + right) >> 1;
-            if (nums[left] == target) {
-                return left;
-            } else if (nums[middle] == target) {
-                return findLeft(nums, left, middle, target);
-            } else if (nums[middle] < target) {
-                left = middle + 1;
-            } else {
-                right--;
-            }
+        if (nums[l] == target) {
+            return l;
         }
-        return mid;
+        return -1;
     }
 }
