@@ -3,9 +3,6 @@ package normal.question_0206.ReverseLinkedList;
 import org.junit.jupiter.api.Test;
 import other.ListNode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 /**
  * Given the head of a singly linked list, reverse the list, and return the reversed list.
  * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -31,27 +28,17 @@ public class Solution {
 
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) {
-            return null;
+            return head;
         }
-        Deque<ListNode> stack = new ArrayDeque<>();
-        while (head.next != null) {
-            ListNode point;
-            point = head;
-            head = head.next;
-            point.next = null;
-            stack.push(point);
+        ListNode p = null;
+        ListNode q = head;
+        while (q != null) {
+            ListNode temp = q.next;
+            q.next = p;
+            p = q;
+            q = temp;
         }
-        stack.push(head);
-        ListNode left;
-        ListNode right;
-        left = stack.pop();
-        right = stack.pop();
-        left.next = right;
-        while (!stack.isEmpty()) {
-            right.next = stack.pop();
-            right = right.next;
-        }
-        return left;
+        return p;
     }
 
 }
