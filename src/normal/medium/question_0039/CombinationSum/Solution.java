@@ -38,7 +38,8 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(combinationSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 10}, 11));
+        // 公司的拉跨电脑结果过多时会堆溢出，回家试试看
+        System.out.println(combinationSum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 10}, 100));
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
