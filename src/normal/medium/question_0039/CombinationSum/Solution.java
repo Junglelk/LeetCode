@@ -56,6 +56,7 @@ public class Solution {
             ans.add(new ArrayList<>(temp));
             return;
         }
+        // 此处使用当前数和不使用当前数构成了分支，最后的搜索情况是一颗二叉树
         // 跳过当前数
         dfs(candidates, target, ans, temp, index + 1);
         // 使用当前数
