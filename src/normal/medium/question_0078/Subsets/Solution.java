@@ -50,8 +50,7 @@ public class Solution {
         }
         for (int j = i; j < nums.length; j++) {
             temp.add(nums[j]);
-            // 此处应由下一个位置处的数字开始遍历
-            dfs(nums, i + 1, k - 1, temp, list);
+            dfs(nums, j + 1, k - 1, temp, list);
             temp.remove(temp.size() - 1);
         }
 
