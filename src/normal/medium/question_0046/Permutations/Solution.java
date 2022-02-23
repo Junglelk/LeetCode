@@ -44,11 +44,11 @@ public class Solution {
             list.add(new ArrayList<>(temp));
         }
         for (int i = 0; i < nums.length; i++) {
-            // 这里的思想是未选择，就添加，然后将已选择的置true
-            // 这样想有漏洞：由于每次都是从 0 开始，所以必然不会进到第二个位置
-            if (!used[i]) {
-                temp.add(nums[i]);
+            // 这里应该是已选择，就跳过;
+            if (used[i]) {
+                continue;
             }
+            temp.add(nums[i]);
             used[i] = true;
             dfs(nums, n, depth + 1, temp, used, list);
             temp.remove(temp.size() - 1);
