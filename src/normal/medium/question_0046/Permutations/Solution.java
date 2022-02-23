@@ -44,6 +44,8 @@ public class Solution {
             list.add(new ArrayList<>(temp));
         }
         for (int i = 0; i < nums.length; i++) {
+            // 这里的思想是未选择，就添加，然后将已选择的置true
+            // 这样想有漏洞：由于每次都是从 0 开始，所以必然不会进到第二个位置
             if (!used[i]) {
                 temp.add(nums[i]);
             }
