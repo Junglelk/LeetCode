@@ -25,8 +25,6 @@ public class Solution {
 
     @Test
     public void test() {
-        // [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
-        //"ABCCED"
         System.out.println(exist(new char[][]{
                 {'A', 'B', 'C', 'E'},
                 {'S', 'F', 'C', 'S'},
