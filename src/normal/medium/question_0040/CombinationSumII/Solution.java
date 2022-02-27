@@ -39,7 +39,7 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(combinationSum2(new int[]{1, 1, 2, 5, 6, 7, 10}, 8));
+        System.out.println(combinationSum2(new int[]{1}, 8));
     }
 
 
@@ -48,12 +48,11 @@ public class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<Integer> temp = new ArrayList<>();
         Arrays.sort(candidates);
-        boolean[] visited = new boolean[candidates.length];
-        dfs(candidates, visited, target, 0, temp);
+        dfs(candidates, target, 0, temp);
         return list;
     }
 
-    private void dfs(int[] candidates, boolean[] visited, int target, int cur, List<Integer> temp) {
+    private void dfs(int[] candidates, int target, int cur, List<Integer> temp) {
         if (target == 0) {
             list.add(new ArrayList<>(temp));
             return;
@@ -62,9 +61,10 @@ public class Solution {
             if (cur < i && candidates[i] == candidates[i - 1]) {
                 continue;
             }
-            if (target - candidates[cur] >= 0) {
+            if (target - candidates[i] >= 0) {
                 temp.add(candidates[i]);
-                dfs(candidates, visited, target - candidates[i], cur + 1, temp);
+                // 初解的cur传递到下面，导致了已经遍历过的数字对遍历顺序产生了影响，出现了重复的情况
+                dfs(candidates, target - candidates[i], i + 1, temp);
                 temp.remove(temp.size() - 1);
             } else {
                 break;
