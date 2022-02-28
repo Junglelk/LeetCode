@@ -45,6 +45,10 @@ public class Solution {
             list.add(new ArrayList<>(temp));
             return;
         }
+        // 剪枝
+        if (temp.size() > 3) {
+            return;
+        }
         for (int i = cur; i < nums.length; i++) {
             if (i > cur && nums[i] == nums[i - 1]) {
                 continue;
