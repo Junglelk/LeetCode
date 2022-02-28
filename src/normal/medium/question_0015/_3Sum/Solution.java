@@ -46,7 +46,7 @@ public class Solution {
             return;
         }
         // 剪枝
-        if (temp.size() > 3) {
+        if (temp.size() >= 3) {
             return;
         }
         for (int i = cur; i < nums.length; i++) {
