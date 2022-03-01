@@ -20,6 +20,7 @@ public class Solution {
         r[1] = 1;
         for (int i = 2; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
+                // 长度为 i 时的1~i的所有节点左右子树的乘积即为 r[i]
                 r[i] += r[j - 1] * r[i - j];
             }
         }
