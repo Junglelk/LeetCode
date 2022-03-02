@@ -58,8 +58,10 @@ public class Solution {
                         }
                     }
                 }
-                if (temp == 1) {
-                    count++;
+                if (temp == 1 || temp == 0) {
+                    if (grid[i][j] == '1') {
+                        count++;
+                    }
                 }
             }
         }
