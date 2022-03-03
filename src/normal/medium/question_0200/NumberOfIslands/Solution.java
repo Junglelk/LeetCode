@@ -32,12 +32,13 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(numIslands(new char[][]{
-                {'1', '1', '1', '1', '0'},
-                {'1', '1', '0', '1', '0'},
-                {'1', '1', '0', '0', '0'},
-                {'0', '0', '0', '0', '0'}
-        }));
+//        System.out.println(numIslands(new char[][]{
+//                {'1', '1', '1', '1', '0'},
+//                {'1', '1', '0', '1', '0'},
+//                {'1', '1', '0', '0', '0'},
+//                {'0', '0', '0', '0', '0'}
+//        }));
+        System.out.println(numIslands(new char[][]{{'1', '1'}}));
     }
 
     int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
@@ -46,6 +47,7 @@ public class Solution {
         int count = 0;
         int m = grid.length;
         int n = grid[0].length;
+        boolean[][] vistited = new boolean[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 int temp = 0;
@@ -53,13 +55,15 @@ public class Solution {
                     int newI = dir[0] + i;
                     int newJ = dir[1] + j;
                     if (newI >= 0 && newI < m && newJ >= 0 && newJ < n) {
-                        if (grid[newI][newJ] == '1') {
+                        if (grid[newI][newJ] == '1' && !vistited[newI][newJ]) {
                             temp++;
                         }
                     }
                 }
                 if (temp == 1 || temp == 0) {
                     if (grid[i][j] == '1') {
+                        grid[i][j] = '0';
+                        vistited[i][j] = true;
                         count++;
                     }
                 }
