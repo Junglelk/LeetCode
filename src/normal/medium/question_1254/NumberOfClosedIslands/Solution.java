@@ -20,6 +20,20 @@ import org.junit.jupiter.api.Test;
  *            ]
  * 输出：2
  * </pre>
+ * <pre>
+ * [
+ *      {0,0,1,1,0,1,0,0,1,0},
+ *      {1,1,0,1,1,0,1,1,1,0},
+ *      {1,0,1,1,1,0,0,1,1,0},
+ *      {0,1,1,0,0,0,0,1,0,1},
+ *      {0,0,0,0,0,0,1,1,1,0},
+ *      {0,1,0,1,0,1,0,1,1,1},
+ *      {1,0,1,0,1,1,0,0,0,1},
+ *      {1,1,1,1,1,1,0,0,0,0},
+ *      {1,1,1,0,0,1,0,1,0,1},
+ *      {1,1,1,0,1,1,0,1,1,0}
+ * ]
+ * </pre>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/number-of-closed-islands
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
@@ -33,11 +47,11 @@ public class Solution {
     @Test
     public void test() {
         System.out.println(closedIsland(new int[][]{
-                {1, 1, 1, 1, 1, 1, 1, 0},
-                {1, 0, 0, 0, 0, 1, 1, 0},
-                {1, 0, 1, 0, 1, 1, 1, 0},
-                {1, 0, 0, 0, 0, 1, 0, 1},
-                {1, 1, 1, 1, 1, 1, 1, 0}
+                {1,1,1,1,1,1,1,0},
+                {1,0,0,0,0,1,1,0},
+                {1,0,1,0,1,1,1,0},
+                {1,0,0,0,0,1,0,1},
+                {1,1,1,1,1,1,1,0}
         }));
     }
 
@@ -46,6 +60,22 @@ public class Solution {
         int m = grid.length;
         int n = grid[0].length;
         int ret = 0;
+        for (int i = 0; i < n; i++) {
+            if (grid[0][i] == 0) {
+                dfs(grid, 0, i);
+            }
+            if (grid[m - 1][i] == 0) {
+                dfs(grid, m - 1, i);
+            }
+        }
+        for (int i = 0; i < m; i++) {
+            if (grid[i][0] == 0) {
+                dfs(grid, i, 0);
+            }
+            if (grid[i][n - 1] == 0) {
+                dfs(grid, i, n - 1);
+            }
+        }
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (i > 0 && i < m - 1 && j > 0 && j < n - 1 && grid[i][j] == 0) {
