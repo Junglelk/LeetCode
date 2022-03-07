@@ -77,19 +77,22 @@ public class Solution {
             ans.add(new ArrayList<>(temp));
             return;
         }
+        if (i == 2 && j == 2) {
+            System.out.println("case");
+        }
         for (int m = 0; m < heights.length; m++) {
             for (int n = 0; n < heights[0].length; n++) {
                 if (!visited[m][n]) {
-                    visited[m][n] = true;
-                    temp.add(m);
-                    temp.add(n);
                     for (int[] dir : dirs) {
                         int newI = m + dir[0];
                         int newJ = n + dir[1];
                         if (newI >= heights.length || newI < 0 || newJ >= heights[0].length || newJ < 0) {
                             continue;
                         }
-                        if (!visited[newI][newJ] && heights[newI][newJ] <= heights[newI][newJ]) {
+                        visited[m][n] = true;
+                        temp.add(newI);
+                        temp.add(newJ);
+                        if (!visited[newI][newJ] && heights[newI][newJ] <= heights[m][n]) {
                             dfs(heights, visited, ans, temp, newI, newJ);
                         }
                         temp.remove(temp.size() - 1);
