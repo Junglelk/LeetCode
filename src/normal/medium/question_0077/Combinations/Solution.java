@@ -35,41 +35,30 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(combine(3, 3));
+        System.out.println(combine(10, 1));
     }
 
 
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
-        if (k == n) {
-            for (int i = 1; i < n; i++) {
-                int i1 = i;
-                ans.add(new ArrayList<>(new ArrayList<>() {{
-                    add(i1);
-                }}));
-            }
-        }
         dfs(1, ans, temp, n, k);
         return ans;
     }
 
     private void dfs(int start, List<List<Integer>> ans, List<Integer> temp, int n, int k) {
+        if (temp.size() + (n - start + 1) < k) {
+            return;
+        }
         if (temp.size() == k) {
             ans.add(new ArrayList<>(temp));
             return;
         }
-        for (int i = start; i <= n; i++) {
-            temp.add(i);
-            for (int j = start + 1; j <= n; j++) {
-                if (i >= j) {
-                    continue;
-                }
-                temp.add(j);
-                dfs(j, ans, temp, n, k);
-                temp.remove(temp.size() - 1);
-            }
-            temp.remove(temp.size() - 1);
-        }
+        temp.add(start);
+        // 考虑当前值
+        dfs(start + 1, ans, temp, n, k);
+        temp.remove(temp.size() - 1);
+        // 不考虑当前值
+        dfs(start + 1, ans, temp, n, k);
     }
 }
