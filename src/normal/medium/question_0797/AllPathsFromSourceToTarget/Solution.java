@@ -37,9 +37,9 @@ public class Solution {
             ans.add(new LinkedList<>(temp));
             return;
         }
-        for (int j = 0; j < ints.length; j++) {
-            temp.add(ints[j]);
-            dfs(graph, ans, graph[ints[j]], temp, ints[j]);
+        for (int j : ints) {
+            temp.add(j);
+            dfs(graph, ans, graph[j], temp, j);
             temp.remove(temp.size() - 1);
         }
     }
