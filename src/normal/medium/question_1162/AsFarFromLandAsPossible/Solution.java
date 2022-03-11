@@ -2,6 +2,9 @@ package normal.medium.question_1162.AsFarFromLandAsPossible;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
  * Given an n x n grid containing only values 0 and 1, where 0 represents water and 1 represents land, find a water cell such that its distance to the nearest land cell is maximized, and return the distance. If no land or water exists in the grid, return -1.
  * <p>
@@ -48,57 +51,42 @@ public class Solution {
      * @return 最大长度
      */
     public int maxDistance(int[][] grid) {
-        int inf = 1000_000;
-        int n = grid.length;
-        int[][] f = new int[n][n];
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                f[i][j] = grid[i][j] == 1 ? 0 : inf;
-            }
-        }
-
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (grid[i][j] == 1) {
-                    continue;
-                }
-                if (i - 1 >= 0) {
-                    f[i][j] = Math.min(f[i][j], f[i - 1][j] + 1);
-                }
-                if (j - 1 >= 0) {
-                    f[i][j] = Math.min(f[i][j], f[i][j - 1] + 1);
-                }
-            }
-        }
-
-        for (int i = n - 1; i >= 0; --i) {
-            for (int j = n - 1; j >= 0; --j) {
-                if (grid[i][j] == 1) {
-                    continue;
-                }
-                if (i + 1 < n) {
-                    f[i][j] = Math.min(f[i][j], f[i + 1][j] + 1);
-                }
-                if (j + 1 < n) {
-                    f[i][j] = Math.min(f[i][j], f[i][j + 1] + 1);
-                }
-            }
-        }
-
         int ans = -1;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
+        for (int i = 0; i < grid.length; ++i) {
+            for (int j = 0; j < grid.length; ++j) {
                 if (grid[i][j] == 0) {
-                    ans = Math.max(ans, f[i][j]);
+                    ans = Math.max(ans, findNearestLand(grid, i, j));
                 }
             }
         }
-
-        if (ans == inf) {
-            return -1;
-        } else {
-            return ans;
-        }
+        return ans;
     }
 
+    int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    private int findNearestLand(int[][] grid, int i, int j) {
+        boolean[][] visited = new boolean[grid.length][grid.length];
+        Queue<int[]> queue = new ArrayDeque<>();
+        queue.add(new int[]{i, j, 0});
+        visited[i][j] = true;
+        while (!queue.isEmpty()) {
+            int[] poll = queue.poll();
+            for (int[] dir : dirs) {
+                int nI = dir[0] + poll[0];
+                int nJ = dir[1] + poll[1];
+                if (nI < 0 || nI >= grid.length || nJ < 0 || nJ >= grid.length) {
+                    continue;
+                }
+                // 没有遍历过，则遍历该节点
+                if (!visited[nI][nJ]) {
+                    queue.offer(new int[]{nI, nJ, poll[2] + 1});
+                    visited[nI][nJ] = true;
+                    if (grid[nI][nJ] == 1) {
+                        return poll[2] + 1;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
 }
