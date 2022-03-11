@@ -34,7 +34,7 @@ import org.junit.jupiter.api.Test;
  * 链接：https://leetcode-cn.com/problems/max-area-of-island
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  *
- * @author mk
+ * @author Jungle
  * @since 2022/3/3 16:25
  */
 public class Solution {

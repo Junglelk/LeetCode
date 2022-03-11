@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 链接：https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  *
- * @author mk
+ * @author Jungle
  * @since 2022/3/11 9:35
  */
 public class Solution {
