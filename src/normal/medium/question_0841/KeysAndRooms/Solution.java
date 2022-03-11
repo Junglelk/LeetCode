@@ -2,7 +2,10 @@ package normal.medium.question_0841.KeysAndRooms;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
@@ -64,20 +67,18 @@ public class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         Queue<List<Integer>> queue = new ArrayDeque<>();
         queue.offer(rooms.get(0));
-        Set<Integer> visited = new HashSet<>();
+        boolean[] visited = new boolean[rooms.size()];
         int count = 1;
-        visited.add(0);
+        visited[0] = true;
         while (!queue.isEmpty()) {
             List<Integer> poll = queue.poll();
             for (Integer i : poll) {
-                if (visited.contains(i)) {
+                if (visited[i]) {
                     continue;
                 }
                 queue.add(rooms.get(i));
-                if (!visited.contains(i)) {
-                    visited.add(i);
-                    count++;
-                }
+                visited[i] = true;
+                count++;
             }
         }
         return count == rooms.size();
