@@ -1,4 +1,4 @@
-package question_sword.question_sword_03.FindRepeatNumber;
+package sword.question_003.FindRepeatNumber;
 
 import java.util.Arrays;
 import java.util.HashMap;

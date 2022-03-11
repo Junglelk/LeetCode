@@ -1,4 +1,4 @@
-package question_sword.question_sword_42.MaxSubArray;
+package sword.question_042.MaxSubArray;
 
 /**
  * @author Jungle
