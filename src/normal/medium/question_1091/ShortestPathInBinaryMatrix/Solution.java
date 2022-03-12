@@ -42,8 +42,8 @@ public class Solution {
         // [0,0,0],[1,1,0],[1,1,0]
         System.out.println(shortestPathBinaryMatrix(new int[][]{
                 {0, 0, 0},
-                {1, 1, 0},
-                {1, 1, 0}
+                {0, 1, 0},
+                {0, 0, 0}
         }));
     }
 
@@ -54,32 +54,26 @@ public class Solution {
             return -1;
         }
         int n = grid.length;
-        boolean[][] visited = new boolean[n][n];
         Queue<int[]> queue = new ArrayDeque<>();
-        queue.offer(new int[]{0, 0});
-        bfs(grid, visited, queue);
-        if (visited[n - 1][n - 1]) {
-            return queue.size();
-        }
-        return -1;
-    }
-
-    private void bfs(int[][] grid, boolean[][] visited, Queue<int[]> queue) {
+        int[] temp = {0, 0, 1};
+        queue.offer(temp);
+        grid[0][0] = 1;
         while (!queue.isEmpty()) {
             int[] poll = queue.poll();
+            if (poll[0] == n - 1 && poll[1] == n - 1) {
+                return poll[2];
+            }
             for (int[] dir : dirs) {
                 int ni = dir[0] + poll[0];
                 int nj = dir[1] + poll[1];
                 if (ni >= 0 && ni < grid.length && nj >= 0 && nj < grid.length) {
-                    visited[ni][nj] = true;
-                    if (grid[ni][nj] == 0 ) {
-                        queue.offer(new int[]{ni, nj});
+                    if (grid[ni][nj] == 0) {
+                        queue.offer(new int[]{ni, nj, poll[2] + 1});
+                        grid[ni][nj] = 1;
                     }
-                }
-                if (visited[grid.length - 1][grid.length - 1]) {
-                    return;
                 }
             }
         }
+        return -1;
     }
 }
