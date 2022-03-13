@@ -41,13 +41,15 @@ public class Solution {
         }
         int longest = 0;
         for (Integer integer : set) {
-            int tempLong = 0;
-            int temp = integer;
-            while (set.contains(temp)) {
-                tempLong++;
-                temp++;
+            if (!set.contains(integer - 1)) {
+                int tempLong = 0;
+                int temp = integer;
+                while (set.contains(temp)) {
+                    tempLong++;
+                    temp++;
+                }
+                longest = Math.max(tempLong, longest);
             }
-            longest = Math.max(tempLong, longest);
         }
         return longest;
     }
