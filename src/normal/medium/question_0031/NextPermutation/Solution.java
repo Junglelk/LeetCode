@@ -45,22 +45,40 @@ import java.util.Arrays;
 public class Solution {
     @Test
     public void test() {
-        int[] nums = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,12};
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 12};
         nextPermutation(nums);
         System.out.println(Arrays.toString(nums));
     }
 
 
-
     public void nextPermutation(int[] nums) {
-        for (int i = nums.length - 1; i > 0; i--) {
-            if (nums[i] > nums[i - 1]) {
-                int temp = nums[i];
-                nums[i] = nums[i - 1];
-                nums[i - 1] = temp;
-                return;
-            }
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            i--;
         }
-        Arrays.sort(nums);
+
+        if (i >= 0) {
+            int j = nums.length - 1;
+            while (j >= 0 && nums[i] >= nums[j]) {
+                j--;
+            }
+            swap(nums, i, j);
+        }
+        reverse(nums, i + 1);
+    }
+
+    public void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public void reverse(int[] nums, int start) {
+        int left = start, right = nums.length - 1;
+        while (left < right) {
+            swap(nums, left, right);
+            left++;
+            right--;
+        }
     }
 }
