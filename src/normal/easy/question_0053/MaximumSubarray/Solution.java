@@ -1,4 +1,4 @@
-package normal.question_0053.MaximumSubarray;
+package normal.easy.question_0053.MaximumSubarray;
 
 import org.junit.jupiter.api.Test;
 

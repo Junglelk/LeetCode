@@ -1,4 +1,4 @@
-package normal.question_0035.SearchInsertPosition;
+package normal.easy.question_0035.SearchInsertPosition;
 
 import org.junit.jupiter.api.Test;
 
