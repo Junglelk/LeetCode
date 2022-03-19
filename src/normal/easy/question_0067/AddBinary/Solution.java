@@ -1,4 +1,4 @@
-package normal.question_0067.AddBinary;
+package normal.easy.question_0067.AddBinary;
 
 import org.junit.jupiter.api.Test;
 

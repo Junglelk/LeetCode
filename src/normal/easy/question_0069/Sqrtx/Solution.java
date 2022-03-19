@@ -1,4 +1,4 @@
-package normal.question_0069.Sqrtx;
+package normal.easy.question_0069.Sqrtx;
 
 import org.junit.jupiter.api.Test;
 
