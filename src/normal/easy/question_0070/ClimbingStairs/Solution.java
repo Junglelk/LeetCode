@@ -1,4 +1,4 @@
-package normal.question_0070.ClimbingStairs;
+package normal.easy.question_0070.ClimbingStairs;
 
 /**
  * You are climbing a staircase. It takes n steps to reach the top.

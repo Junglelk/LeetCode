@@ -1,4 +1,4 @@
-package normal.question_0083.RemoveDuplicatesFromSortedList;
+package normal.easy.question_0083.RemoveDuplicatesFromSortedList;
 
 import other.ListNode;
 
