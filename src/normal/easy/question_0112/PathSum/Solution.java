@@ -1,4 +1,4 @@
-package normal.question_0112.PathSum;
+package normal.easy.question_0112.PathSum;
 
 import other.TreeNode;
 

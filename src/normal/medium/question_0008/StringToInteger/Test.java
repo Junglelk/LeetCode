@@ -1,4 +1,4 @@
-package normal.question_0008.StringToInteger;
+package normal.medium.question_0008.StringToInteger;
 
 public class Test {
     public static void main(String[] args) {
