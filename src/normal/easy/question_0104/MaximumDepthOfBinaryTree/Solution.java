@@ -1,4 +1,4 @@
-package normal.question_0104.MaximumDepthOfBinaryTree;
+package normal.easy.question_0104.MaximumDepthOfBinaryTree;
 
 import other.TreeNode;
 
