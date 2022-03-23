@@ -1,4 +1,4 @@
-package normal.question_0003.LongestSubstringWithoutRepeatingCharacters;
+package normal.medium.question_0003.LongestSubstringWithoutRepeatingCharacters;
 
 import org.junit.jupiter.api.Test;
 
