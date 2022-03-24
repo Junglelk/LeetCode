@@ -1,4 +1,4 @@
-package normal.question_0121.BestTimeToBuyAndSellStock;
+package normal.easy.question_0121.BestTimeToBuyAndSellStock;
 
 import org.junit.jupiter.api.Test;
 

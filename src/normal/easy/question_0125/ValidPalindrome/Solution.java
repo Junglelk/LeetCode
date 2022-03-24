@@ -1,4 +1,4 @@
-package normal.question_0125.ValidPalindrome;
+package normal.easy.question_0125.ValidPalindrome;
 
 import org.junit.jupiter.api.Test;
 
