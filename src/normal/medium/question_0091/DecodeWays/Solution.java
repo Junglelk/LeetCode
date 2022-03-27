@@ -1,4 +1,4 @@
-package normal.question_0091.DecodeWays;
+package normal.medium.question_0091.DecodeWays;
 
 import org.junit.jupiter.api.Test;
 

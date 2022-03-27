@@ -1,4 +1,4 @@
-package normal.question_0217.ContainsDuplicate;
+package normal.easy.question_0217.ContainsDuplicate;
 
 import java.util.HashSet;
 import java.util.Set;
