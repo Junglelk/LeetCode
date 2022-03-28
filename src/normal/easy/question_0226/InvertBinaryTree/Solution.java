@@ -1,4 +1,4 @@
-package normal.question_0226.InvertBinaryTree;
+package normal.easy.question_0226.InvertBinaryTree;
 
 import other.TreeNode;
 

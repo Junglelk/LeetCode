@@ -1,4 +1,4 @@
-package normal.question_0063.UniquePathsII;
+package normal.medium.question_0063.UniquePathsII;
 
 import org.junit.jupiter.api.Test;
 

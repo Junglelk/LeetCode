@@ -1,4 +1,4 @@
-package normal.question_0232.ImplementQueueUsingStacks;
+package normal.easy.question_0232.ImplementQueueUsingStacks;
 
 import java.util.Deque;
 import java.util.LinkedList;
