@@ -1,4 +1,4 @@
-package normal.question_0476.NumberComplement;
+package normal.easy.question_0476.NumberComplement;
 
 import org.junit.jupiter.api.Test;
 
