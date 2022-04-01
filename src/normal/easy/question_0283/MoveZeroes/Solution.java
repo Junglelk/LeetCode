@@ -1,4 +1,4 @@
-package normal.question_0283.MoveZeroes;
+package normal.easy.question_0283.MoveZeroes;
 
 /**
  * Move Zeroes

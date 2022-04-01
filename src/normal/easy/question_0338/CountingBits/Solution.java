@@ -1,4 +1,4 @@
-package normal.question_0338.CountingBits;
+package normal.easy.question_0338.CountingBits;
 
 import org.junit.jupiter.api.Test;
 
