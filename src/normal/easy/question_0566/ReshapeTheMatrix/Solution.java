@@ -1,4 +1,4 @@
-package normal.question_0566.ReshapeTheMatrix;
+package normal.easy.question_0566.ReshapeTheMatrix;
 
 /**
  * In MATLAB, there is a handy function called reshape which can reshape an m x n matrix into a new one with a different size r x c keeping its original data.

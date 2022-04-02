@@ -1,4 +1,4 @@
-package normal.question_0575.DistributeCandies;
+package normal.easy.question_0575.DistributeCandies;
 
 import java.util.HashSet;
 import java.util.Set;
