@@ -1,4 +1,4 @@
-package normal.medium.question_0176.SecondHighestSalary;
+package normal.medium.question_0176_and_177.SecondHighestSalary;
 
 /**
  * <pre>
