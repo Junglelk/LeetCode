@@ -21,23 +21,27 @@ public class Solution {
 
     @Test
     public void test() {
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring(null));
     }
 
 
     public int lengthOfLongestSubstring(String s) {
-        int maxLength = 0;
-        int i = 0, j = 0;
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int i = 0;
+        int j = 0;
         Set<Character> set = new HashSet<>();
+        int result = Integer.MIN_VALUE;
 
         while (i < s.length() && j < s.length()) {
             if (!set.contains(s.charAt(j))) {
                 set.add(s.charAt(j++));
-                maxLength = Math.max(maxLength, i - j);
+                result = Math.max(result, j - i);
             } else {
                 set.remove(s.charAt(i++));
             }
         }
-        return maxLength;
+        return result;
     }
 }
