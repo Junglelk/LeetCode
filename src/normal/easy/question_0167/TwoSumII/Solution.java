@@ -1,4 +1,4 @@
-package normal.question_0167.TwoSumII;
+package normal.easy.question_0167.TwoSumII;
 
 import org.junit.jupiter.api.Test;
 
