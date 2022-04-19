@@ -42,28 +42,21 @@ public class Solution {
 
 
     public int[] shortestToChar(String s, char c) {
-        int[] ans = new int[s.length()];
-        Arrays.fill(ans, Integer.MAX_VALUE);
-        for (int i = 0; i < s.length(); i++) {
+        int n = s.length();
+        int[] ans = new int[n];
+
+        for (int i = 0, idx = -n; i < n; ++i) {
             if (s.charAt(i) == c) {
-                ans[i] = 0;
+                idx = i;
             }
+            ans[i] = i - idx;
         }
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i + 1; j < s.length(); j++) {
-                if (ans[j] == 0 && ans[i] != 0) {
-                    ans[i] = j - i;
-                    break;
-                }
+
+        for (int i = n - 1, idx = 2 * n; i >= 0; --i) {
+            if (s.charAt(i) == c) {
+                idx = i;
             }
-        }
-        for (int i = s.length() - 1; i >= 0; i--) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (ans[j] == 0 && ans[i] != 0) {
-                    ans[i] = Math.min(i - j, ans[i]);
-                    break;
-                }
-            }
+            ans[i] = Math.min(ans[i], idx - i);
         }
         return ans;
     }
