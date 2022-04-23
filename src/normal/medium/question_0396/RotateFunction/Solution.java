@@ -29,6 +29,19 @@ import java.util.Arrays;
  * @since 2022/4/22 23:47
  */
 public class Solution {
+    /**
+     * 记数组 nums 的元素之和为 numSum。根据公式，可以得到：
+     *
+     * <li>F(0)=0×nums[0]+1×nums[1]+…+(n−1)×nums[n−1]</li>
+     * <li>F(1)=1×nums[0]+2×nums[1]+…+0×nums[n−1]=F(0)+numSum−n×nums[n−1]</li>
+     *
+     * 作者：LeetCode-Solution
+     * 链接：<a href="https://leetcode-cn.com/problems/rotate-function/solution/xuan-zhuan-shu-zu-by-leetcode-solution-s0wd/">https://leetcode-cn.com/problems/rotate-function/solution/xuan-zhuan-shu-zu-by-leetcode-solution-s0wd/</a>
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param nums 待求数组
+     * @return ans
+     */
     public int maxRotateFunction(int[] nums) {
         int f = 0, n = nums.length, numSum = Arrays.stream(nums).sum();
         for (int i = 0; i < n; i++) {
