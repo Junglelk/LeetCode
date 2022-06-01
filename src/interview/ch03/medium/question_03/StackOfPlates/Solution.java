@@ -2,10 +2,7 @@ package interview.ch03.medium.question_03.StackOfPlates;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 堆盘子。设想有一堆盘子，堆太高可能会倒下来。因此，在现实生活中，盘子堆到一定高度时，我们就会另外堆一堆盘子。请实现数据结构SetOfStacks，模拟这种行为。SetOfStacks应该由多个栈组成，并且在前一个栈填满时新建一个栈。此外，SetOfStacks.push()和SetOfStacks.pop()应该与普通栈的操作方法相同（也就是说，pop()返回的值，应该跟只有一个栈时的情况一样）。 进阶：实现一个popAt(int index)方法，根据指定的子栈，执行pop操作。
@@ -36,52 +33,46 @@ public class Solution {
 
 class StackOfPlates {
 
-    List<Deque<Integer>> stacks = new ArrayList<>();
     int cap;
-
+    List<Deque<Integer>> stacks;
 
     public StackOfPlates(int cap) {
         this.cap = cap;
+        stacks = new LinkedList<>();
     }
 
     public void push(int val) {
-        if (stacks.size() == 0 || stacks.get(stacks.size() - 1).size() == cap) {
-            Deque<Integer> stack = new LinkedList<>();
-            stacks.add(stack);
+        if (cap <= 0) {
+            return;
         }
-        stacks.get(stacks.size() - 1).push(val);
+
+        if (stacks.isEmpty() || stacks.get(stacks.size() - 1).size() == cap) {
+            stacks.add(new ArrayDeque<>());
+        }
+        stacks.get(stacks.size() - 1).offerLast(val);
     }
 
     public int pop() {
+
         if (stacks.size() == 0) {
             return -1;
-        } else {
-            for (int i = stacks.size() - 1; i >= 0; i--) {
-                Deque<Integer> stack = stacks.get(i);
-                if (stack.size() != 0) {
-                    return stack.pop();
-                }
-            }
-            return -1;
         }
+
+        int result = stacks.get(stacks.size() - 1).pollLast();
+        if (stacks.get(stacks.size() - 1).size() == 0) {
+            stacks.remove(stacks.size() - 1);
+        }
+        return result;
     }
 
     public int popAt(int index) {
-        if (index < stacks.size()) {
-            Deque<Integer> stack = stacks.get(index);
-            if (stack.size() != 0) {
-                return stack.pop();
-            }
-
-            for (int i = stacks.size() - 1; i >= 0; i--) {
-                stack = stacks.get(i);
-                if (stack.size() != 0) {
-                    return stack.pop();
-                }
-            }
-            return 0;
-        } else {
+        if (index < 0 || index >= stacks.size()) {
             return -1;
         }
+        int result = stacks.get(index).pollLast();
+        if (stacks.get(index).size() == 0) {
+            stacks.remove(index);
+        }
+        return result;
     }
 }
