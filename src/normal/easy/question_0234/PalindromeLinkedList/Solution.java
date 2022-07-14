@@ -3,8 +3,8 @@ package normal.easy.question_0234.PalindromeLinkedList;
 import org.junit.jupiter.api.Test;
 import other.ListNode;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Given the head of a singly linked list, return true if it is a palindrome.
@@ -25,7 +25,7 @@ public class Solution {
         System.out.println(isPalindrome(new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(1))))));
         System.out.println(isPalindrome(new ListNode(1, new ListNode(2, new ListNode(1)))));
         System.out.println(isPalindrome(new ListNode(1)));
-        System.out.println(isPalindrome(new ListNode(1,new ListNode(2))));
+        System.out.println(isPalindrome(new ListNode(1, new ListNode(0))));
     }
 
 
@@ -33,32 +33,26 @@ public class Solution {
         if (head.next == null) {
             return true;
         }
-        int size = 1;
-        ListNode i = head;
-        while (i.next != null) {
-            size++;
-            i = i.next;
+        List<Integer> vals = new ArrayList<>();
+
+        // 将链表的值复制到数组中
+        ListNode currentNode = head;
+        while (currentNode != null) {
+            vals.add(currentNode.val);
+            currentNode = currentNode.next;
         }
-        int ret = head.val;
-        int temp = 10;
-        if (size % 2 == 0) {
-            while (head.next != null) {
-                head = head.next;
-                ret ^= head.val;
+
+        // 使用双指针判断是否回文
+        int front = 0;
+        int back = vals.size() - 1;
+        while (front < back) {
+            if (!vals.get(front).equals(vals.get(back))) {
+                return false;
             }
-            return ret == 0;
-        } else {
-            int point = 1;
-            while (head.next != null) {
-                head = head.next;
-                point++;
-                if (point == (size + 1) / 2) {
-                    temp = head.val;
-                }
-                ret ^= head.val;
-            }
-            return temp == ret;
+            front++;
+            back--;
         }
+        return true;
     }
 }
 
