@@ -3,6 +3,8 @@ package normal.easy.question_0094.BinaryTreeInorderTraversal;
 import other.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -18,17 +20,33 @@ import java.util.List;
  * @since 2021/10/10 22:11
  */
 public class Solution {
-    List<Integer> list = new ArrayList<>();
-
     public List<Integer> inorderTraversal(TreeNode root) {
-        if (root == null) return new ArrayList<>();
-        if (root.left != null) {
-            inorderTraversal(root.left);
+        List<Integer> res = new ArrayList<>();
+        inorderRec(root, res);
+        return res;
+    }
+
+    public void inorderRec(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
         }
-        list.add(root.val);
-        if (root.right != null) {
-            inorderTraversal(root.right);
+        inorderRec(root.left, res);
+        res.add(root.val);
+        inorderRec(root.right, res);
+    }
+
+    public List<Integer> inorderNoRec(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stk = new LinkedList<>();
+        while (root != null || !stk.isEmpty()) {
+            while (root != null) {
+                stk.push(root);
+                root = root.left;
+            }
+            root = stk.pop();
+            res.add(root.val);
+            root = root.right;
         }
-        return list;
+        return res;
     }
 }
