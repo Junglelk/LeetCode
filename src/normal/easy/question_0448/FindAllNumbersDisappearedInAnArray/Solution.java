@@ -8,6 +8,8 @@ import java.util.Set;
 /**
  * Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
  * <p>
+ * Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：<a href="https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array">find-all-numbers-disappeared-in-an-array</a>
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
