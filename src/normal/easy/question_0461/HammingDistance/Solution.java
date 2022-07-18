@@ -11,6 +11,14 @@ package normal.easy.question_0461.HammingDistance;
  */
 public class Solution {
     public int hammingDistance(int x, int y) {
-        return Integer.bitCount(x ^ y);
+        int i = x ^ y;
+        char[] chars = Integer.toBinaryString(i).toCharArray();
+        int count = 0;
+        for (char c : chars) {
+            if (c == '1') {
+                count++;
+            }
+        }
+        return count;
     }
 }
