@@ -9,6 +9,9 @@ import java.util.Set;
  * Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
  * <p>
  * Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+ * <li/> n == nums.length
+ * <li/> 1 <= n <= 10^5
+ * <li/> 1 <= nums[i] <= n
  * <p>
  * 来源：力扣（LeetCode）
  * 链接：<a href="https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array">find-all-numbers-disappeared-in-an-array</a>
@@ -16,13 +19,17 @@ import java.util.Set;
  */
 public class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        Set<Integer> list = new HashSet<>();
-        for (int i = 1; i <= nums.length; i++) {
-            list.add(i);
-        }
+        int n = nums.length;
+        List<Integer> list = new ArrayList<>();
         for (int num : nums) {
-            list.remove(num);
+            int x = (num - 1) % n;
+            nums[x] += n;
         }
-        return new ArrayList<>(list);
+        for (int i = 0; i < n; i++) {
+            if (nums[i] <= n) {
+                list.add(i + 1);
+            }
+        }
+        return list;
     }
 }
