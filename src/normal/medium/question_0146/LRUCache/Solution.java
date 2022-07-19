@@ -32,6 +32,9 @@ public class Solution {
     }
 }
 
+/**
+ * 仅为可行解，速度太慢了.官解用的自己构造的双向链表。
+ */
 class LRUCache {
     private final int capacity;
     private final Deque<Integer> stack;
