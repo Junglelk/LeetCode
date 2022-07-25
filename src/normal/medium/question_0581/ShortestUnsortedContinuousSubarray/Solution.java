@@ -24,7 +24,10 @@ import java.util.List;
 public class Solution {
     @Test
     public void test() {
-        System.out.println(findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
+//        System.out.println(findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
+        System.out.println(findUnsortedSubarray(new int[]{1, 3, 2, 4, 5}));
+        System.out.println(findUnsortedSubarray(new int[]{1, 2, 3, 5, 4}));
+//        System.out.println(findUnsortedSubarray(new int[]{1}));
     }
 
 
@@ -32,12 +35,19 @@ public class Solution {
         int[] ints = new int[nums.length];
         System.arraycopy(nums, 0, ints, 0, nums.length);
         Arrays.sort(ints);
-        List<Integer> ret = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        boolean flag = false;
+        for (int i = 0, j = nums.length - 1; i < nums.length && i <= j; i++, j--) {
             if (nums[i] != ints[i]) {
-                ret.add(nums[i]);
+                flag = true;
+                min = Math.min(min, i);
+            }
+            if (nums[j] != ints[j]) {
+                flag = true;
+                max = Math.max(max, j);
             }
         }
-        return ret.size();
+        return flag ? max - min + 1 : 0;
     }
 }
