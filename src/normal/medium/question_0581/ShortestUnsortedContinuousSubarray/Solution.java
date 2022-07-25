@@ -3,10 +3,6 @@ package normal.medium.question_0581.ShortestUnsortedContinuousSubarray;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Given an integer array nums, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order.
  * <p>
@@ -24,30 +20,32 @@ import java.util.List;
 public class Solution {
     @Test
     public void test() {
-//        System.out.println(findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
+        System.out.println(findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
         System.out.println(findUnsortedSubarray(new int[]{1, 3, 2, 4, 5}));
         System.out.println(findUnsortedSubarray(new int[]{1, 2, 3, 5, 4}));
-//        System.out.println(findUnsortedSubarray(new int[]{1}));
+        System.out.println(findUnsortedSubarray(new int[]{1}));
     }
 
 
     public int findUnsortedSubarray(int[] nums) {
-        int[] ints = new int[nums.length];
-        System.arraycopy(nums, 0, ints, 0, nums.length);
-        Arrays.sort(ints);
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        boolean flag = false;
-        for (int i = 0, j = nums.length - 1; i < nums.length && i <= j; i++, j--) {
-            if (nums[i] != ints[i]) {
-                flag = true;
-                min = Math.min(min, i);
+        int n = nums.length;
+        int maxn = Integer.MIN_VALUE;
+        int right = -1;
+        int minn = Integer.MAX_VALUE;
+        int left = -1;
+        for (int i = 0; i < n; i++) {
+            if (maxn > nums[i]) {
+                right = i;
+            } else {
+                maxn = nums[i];
             }
-            if (nums[j] != ints[j]) {
-                flag = true;
-                max = Math.max(max, j);
+            int j = n - i - 1;
+            if (minn < nums[j]) {
+                left = j;
+            } else {
+                minn = nums[j];
             }
         }
-        return flag ? max - min + 1 : 0;
+        return right == -1 ? 0 : right - left + 1;
     }
 }
