@@ -18,7 +18,7 @@ import java.util.List;
  * </pre>
  * <p>
  * 来源：力扣（LeetCode）<br>
- * 链接：https://leetcode-cn.com/problems/unique-binary-search-trees-ii<br>
+ * 链接：<a href="https://leetcode-cn.com/problems/unique-binary-search-trees-ii">unique-binary-search-trees-ii</a>
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。<br>
  *
  * @author Jungle

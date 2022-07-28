@@ -1,5 +1,7 @@
 package normal.question_0654.SetMismacth;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 /**
@@ -7,11 +9,17 @@ import java.util.Arrays;
  * @since 2021/7/4 23:28
  */
 public class Solution {
-    public static void main(String[] args) {
-        int[] nums = {2,2,3,4};
-        System.out.println(Arrays.toString(findErrorNums(nums)));
+
+    @Test
+    public void test() {
+
     }
-    public static int[] findErrorNums(int[] nums) {
+
+
+    /**
+     * 原本的654似乎不是这题，但也找不到这题的出处
+     */
+    public int[] findErrorNums(int[] nums) {
         Arrays.sort(nums);
         int point = 0;
         for (int i = 0; i < nums.length; i++) {
