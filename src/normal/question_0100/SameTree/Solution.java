@@ -27,7 +27,12 @@ public class Solution {
      * @return 是否相等
      */
     public boolean isSameTree(TreeNode p, TreeNode q) {
-
-        return false;
+        if (p == null && q == null) {
+            return true;
+        } else if (p == null || q == null) {
+            return false;
+        } else if (p.val != q.val) {
+            return false;
+        } else return isSameTree(p.right, q.right) && isSameTree(p.left, q.left);
     }
 }
